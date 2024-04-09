@@ -2,6 +2,7 @@ const express=require("express");
 const mongoose = require("mongoose");
 const cors=require("cors");
 const bodyParser = require("body-parser");
+// require('dotenv').config();
 require('dotenv').config();
 
 //creating app
@@ -29,5 +30,5 @@ app.use(cors());
 app.use(bodyParser.json());
 
 //router path to customer route file
-const userRouter=require("./routes/User.route.js");
-app.use("/user",userRouter)
+const paymentRouter=require("./routes/Payment.route.js");
+app.use("/payment",paymentRouter)
