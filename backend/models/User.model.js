@@ -11,10 +11,6 @@ const userSchema= new Schema({
         type: String,
         required: true,
       },
-    //   customerType: {
-    //     type: String,
-    //     required: true,
-    //   },
       fullName: {
         type: String,
         required: true,
@@ -39,8 +35,8 @@ const userSchema= new Schema({
 });
 
 //assigning to mongodb table
-//Customer will the table name 
+//User will the table name 
 const User=mongoose.model("User",userSchema);
 
-//returning Customer schema
+//returning User schema
 module.exports=User;

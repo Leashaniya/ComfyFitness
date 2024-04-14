@@ -28,6 +28,10 @@ connection.once("open",()=>{
 app.use(cors());
 app.use(bodyParser.json());
 
-//router path to customer route file
+//router path to user route file
 const userRouter=require("./routes/User.route.js");
 app.use("/user",userRouter)
+
+//router path to membership route file
+const membershipRouter=require("./routes/Membership.route.js");
+app.use("/membership",membershipRouter)
