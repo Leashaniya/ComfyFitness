@@ -8,7 +8,9 @@ import LoginPopup from './components/LoginPopup/LoginPopup'
 import SignupPopup from './components/SignupPopup/SignupPopup'
 
 
+
 function App() {
+
    // State to control the visibility
    const [showLogin,setShowLogin]=useState(false) 
    const [showSignup, setShowSignup] = useState(false); 
@@ -24,6 +26,7 @@ function App() {
        <Navbar setShowLogin={setShowLogin} setShowSignup={setShowSignup}/>
        <Routes>
          <Route path='/' element={<Home/>}/>
+
        </Routes>
      </div>
     

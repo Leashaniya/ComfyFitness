@@ -6,6 +6,7 @@ import {assets} from '../../assets/assets'
 
 
 const Footer = () => {
+
     // Function to handle clicking on the phone number
     const handlePhoneNumberClick = () => {
         alert('Please call this number from your phone: +94 785632157');
@@ -20,6 +21,7 @@ const Footer = () => {
       const handleSocialMediaClick = (url) => {
         window.open(url, '_blank'); // Opens the social media profile in a new tab
       };
+
     
       return (
         <div className='footer' id='footer'>
@@ -45,9 +47,6 @@ const Footer = () => {
                 </ul>
                 <div className="footer-social-icons">
                     <ul>
-                    {/* <img src={assets.facebook_icon} alt="" />
-                    <img src={assets.twitter_icon} alt="" />
-                    <img src={assets.linkedin_icon} alt="" /> */}
                 <li><a href="https://www.facebook.com/comfyfitness" target="_blank" rel="noopener noreferrer"><img src={assets.facebook_icon} alt="Facebook" onClick={() => handleSocialMediaClick('https://www.facebook.com/')} /></a></li>
                 <li><a href="https://twitter.com/comfyfitness" target="_blank" rel="noopener noreferrer"><img src={assets.twitter_icon} alt="Twitter" onClick={() => handleSocialMediaClick('https://twitter.com/')} /></a></li>
                 <li><a href="https://www.linkedin.com/company/comfyfitness" target="_blank" rel="noopener noreferrer"><img src={assets.linkedin_icon} alt="LinkedIn" onClick={() => handleSocialMediaClick('https://www.linkedin.com/')} /></a></li>

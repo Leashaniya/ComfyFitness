@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import './Navbar.css'
 import { Link } from 'react-router-dom';
 import { assets } from '../../assets/assets';
-import SignupPopup from '../SignupPopup/SignupPopup';
+
 
 
 const Navbar = ({setShowLogin,setShowSignup }) => {
