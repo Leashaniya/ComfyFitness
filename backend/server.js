@@ -32,3 +32,7 @@ app.use(bodyParser.json());
 //router path to customer route file
 const paymentRouter=require("./routes/Payment.route.js");
 app.use("/payment",paymentRouter)
+
+const financeRouter=require("./routes/Finance.route.js");
+app.use("/finance",financeRouter)
+

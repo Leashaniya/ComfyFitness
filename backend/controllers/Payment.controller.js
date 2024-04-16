@@ -1,14 +1,16 @@
 // User.controller.js
-// const Customer = require("../models/Customer.js");
 const Payment=require("../models/Payment.model.js")
 
 const addPayment = async (req, res) => {
-  const { paymentID, Amount, Status } =
+  const { paymentID, paymentAmount, paymentDate,pDescription,pAddressl,pCountry } =
     req.body;
   const newPayment= new Payment({
-    paymentID,
-    Amount,
-    Status,
+     paymentID,
+     paymentAmount, 
+     paymentDate,
+     pDescription,
+     pAddressl,
+     pCountry
     
   });
   try {
@@ -32,13 +34,17 @@ const getAllPayment = async (req, res) => {
 
 const updatePayment = async (req, res) => {
   const { id } = req.params;
-  const {  paymentID, Amount, Status } =
+  const {  paymentID, paymentAmount, paymentDate,pDescription,pAddressl,pCountry  } =
     req.body;
   try {
     await Payment.findByIdAndUpdate(id, {
       paymentID,
-      Amount,
-      Status,
+      paymentAmount, 
+      paymentDate,
+      pDescription,
+      pAddressl,
+      pCountry
+     
     });
     res.json({ status: "Payment updated" });
   } catch (error) {

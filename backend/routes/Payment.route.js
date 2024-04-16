@@ -17,3 +17,5 @@ router.delete("/delete/:id", deletePayment);
 router.get("/get/:id", getPaymentById);
 
 module.exports = router;
+
+

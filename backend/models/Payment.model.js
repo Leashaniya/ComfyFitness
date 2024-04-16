@@ -7,17 +7,36 @@ const Schema =mongoose.Schema;
 //create schema instance
 const paymentSchema= new Schema({
 
-     paymentID: {
-        type: String,
-        required: true,
-      },
-      Amount: {
-        type: Number,
-        required: true
+  //1
+    paymentID: {
+      type: String,
+      require: true,
+      unique: true
     },
-     Status: {
+    //2
+    paymentAmount: {
+        type: Number,
+        require:true
+    },
+    //3
+    paymentDate: {
         type: String,
-        required: true
+        require:true
+    },
+    //4
+    pDescription: {
+        type: String,
+    },
+    //5
+    pAddressl: {
+        type: String,
+        require:true
+    },
+    
+    //6
+    pCountry: {
+        type: String,
+        require:true
     }
     
 });
