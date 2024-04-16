@@ -19,9 +19,9 @@
 .navbar-right{
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 50px;
     justify-content: space-between;
-    padding: 0px 50px;
+    padding: 5px 20px;
 }
 .navbar button{
     background: transparent;
@@ -47,8 +47,4 @@
 }
 .navbar li{
     cursor: pointer;    
-}
-body {
-    background-color: #d7cdff ; /* Set the background color to #ff7627 */
-    color: #ffffff; /* Set the text color to white or another suitable color for contrast */
 }

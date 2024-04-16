@@ -1,32 +1,30 @@
-import React,{useState} from 'react'
-import './Navbar.css'
-import { Link } from 'react-router-dom';
+
+
+import React from 'react'
 import { assets } from '../../assets/assets';
+import { Link } from 'react-router-dom'
+import './Navbar.css'
 
-
-
-const Navbar = ({setShowLogin,setShowSignup }) => {
-    const [menu,setMenu]=useState("home");
+export default function Navbar() {
     return (
-  
-      <div className='navbar'>
-          <img src={assets.logo} alt="" className="logo" />
-  
-          <ul className="navbar-menu">
-              <Link to='/' onClick={()=>setMenu("home")} className={menu==="home"?"active":""}>Home</Link>
-              <a href='#' onClick={()=>setMenu("services")} className={menu==="services"?"active":""}>Services</a>
-              <a href='#' onClick={()=>setMenu("subscriptions")} className={menu==="subscriptions"?"active":""}>Subscriptions</a>
-              <a href='#footer' onClick={()=>setMenu("contact-us")} className={menu==="contact-us"?"active":""}>Contact-us</a>
-              </ul>
-  
-          <div className="navbar-right">         
-              <button onClick={()=>setShowSignup(true)}>Sign up</button>
-              <button onClick={()=>setShowLogin(true)}>Login</button>            
-          </div>
-  
-         
-      </div>
-    )
-}
+        <div className='navbar'>
+        <div>
+          <img className='logo ' src={assets.logo} alt='Logo' />
+        </div>
+        <div>
+          <div className='navbar-menu '>
+        <Link to="/" >Home</Link>
+        <Link to="/services" >Services</Link>
+        <Link to="/subscriptions">Subscriptions</Link>
+        <a href='#footer' >Contact</a>
 
-export default Navbar
+          </div>
+        </div>
+        <div>
+          <h1>
+            <button><Link to={"/login"} className="navbar-right">Login</Link></button>
+          </h1>
+        </div>
+      </div>
+    );
+  }
