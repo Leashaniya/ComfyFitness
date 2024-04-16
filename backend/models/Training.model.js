@@ -5,16 +5,13 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 //create schema instance
-const userSchema = new Schema({
+const trainingSchema = new Schema({
 
-    userID: {
+    trainingID: {
         type: String,
         required: true,
     },
-    //   customerType: {
-    //     type: String,
-    //     required: true,
-    //   },
+
     fullName: {
         type: String,
         required: true,
@@ -27,20 +24,25 @@ const userSchema = new Schema({
         type: Number,
         required: true,
     },
-    username: {
-        type: String,
+    weight: {
+        type: Number,
         required: true,
     },
-    password: {
-        type: String,
+    height: {
+        type: Number,
         required: true,
     },
+    Age: {
+        type: Number,
+        required: true,
+    },
+
 
 });
 
 //assigning to mongodb table
 //Customer will the table name 
-const User = mongoose.model("User", userSchema);
+const Training = mongoose.model("Training", trainingSchema);
 
 //returning Customer schema
-module.exports = User;
+module.exports = Training;

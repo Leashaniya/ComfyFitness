@@ -3,11 +3,11 @@ const router = express.Router();
 
 
 const {
-  addUser,
-  getAllUser,
-  updateUser,
-  deleteUser,
-  getUserById,
+    addUser,
+    getAllUser,
+    updateUser,
+    deleteUser,
+    getUserById,
 } = require("../controllers/User.controller.js");
 
 router.post("/add", addUser);
