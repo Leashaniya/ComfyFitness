@@ -3,16 +3,15 @@
 const Training = require("../models/Training.model,js")
 
 const addTraining = async(req, res) => {
-    const { trainingID, fullName, email, phone, weight, height, Age } =
+    const { trainingID, fullName, email, phone, date, time } =
     req.body;
     const newTraining = new Training({
         trainingID,
         fullName,
         email,
         phone,
-        weight,
-        height,
-        Age,
+        date,
+        time,
     });
     try {
         await newTraining.save();
@@ -35,7 +34,7 @@ const getAllTraining = async(req, res) => {
 
 const updateTraining = async(req, res) => {
     const { id } = req.params;
-    const { trainingID, fullName, email, phone, weight, height, Age } =
+    const { trainingID, fullName, email, phone, date, time } =
     req.body;
     try {
         await User.findByIdAndUpdate(id, {
@@ -43,9 +42,9 @@ const updateTraining = async(req, res) => {
             fullName,
             email,
             phone,
-            weight,
-            height,
-            Age,
+            date,
+            time,
+
         });
         res.json({ status: "Training updated" });
     } catch (error) {

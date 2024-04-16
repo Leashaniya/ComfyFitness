@@ -24,18 +24,15 @@ const trainingSchema = new Schema({
         type: Number,
         required: true,
     },
-    weight: {
-        type: Number,
+    date: {
+        type: Date,
         required: true,
     },
-    height: {
-        type: Number,
+    time: {
+        type: String,
         required: true,
     },
-    Age: {
-        type: Number,
-        required: true,
-    },
+
 
 
 });
