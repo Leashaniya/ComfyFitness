@@ -1,6 +1,6 @@
 // User.controller.js
 // const Customer = require("../models/Customer.js");
-const Training = require("../models/Training.model,js")
+const Training = require("../models/Training.model.js")
 
 const addTraining = async(req, res) => {
     const { trainingID, fullName, email, phone, date, time } =
