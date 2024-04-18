@@ -36,3 +36,9 @@ app.use("/payment",paymentRouter)
 const financeRouter=require("./routes/Finance.route.js");
 app.use("/finance",financeRouter)
 
+// const User=mongoose.model("User",userSchema);
+
+// //returning User schema
+// module.exports=User;
+const userRouter = require("./routes/User.route.js");
+app.use("/user", userRouter);
