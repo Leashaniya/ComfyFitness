@@ -1,9 +1,10 @@
 import React from 'react'
+import CustomerRegister from '../components/CustomerRegister'
 
 const Register = () => {
   return (
     <div>
-      register
+      <CustomerRegister/>
     </div>
   )
 }

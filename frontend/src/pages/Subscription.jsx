@@ -7,7 +7,7 @@ const Subscription = () => {
   return (
     <div>
         <NavbarA/>
-        <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+        {/* <div style={{ display: 'flex', justifyContent: 'space-around' }}>
         <Card style={{ width: '18rem' }}>
       <Card.Img variant="top" src="holder.js/100px180" />
       <Card.Body>
@@ -44,8 +44,7 @@ const Subscription = () => {
         </Card.Text>
         <Button variant="primary">BUY NOW</Button>
       </Card.Body>
-    </Card>
-    </div>
+    </Card> */}
     </div>
   )
 }
