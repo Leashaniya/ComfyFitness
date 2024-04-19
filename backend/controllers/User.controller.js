@@ -377,7 +377,6 @@ const managerRegister = expressAsyncHandler(async (req, res) => {
 
 
 
-
 //login
 const customerLogin = async (req, res) => {
   const { emailOrUsername, password } = req.body;
