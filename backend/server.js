@@ -28,9 +28,38 @@ connection.once("open",()=>{
 app.use(cors());
 app.use(bodyParser.json());
 
-//router path to customer route file
+//router path to user route file
+const userRouter=require("./routes/User.route.js");
+app.use("/user",userRouter)
+
+//router path to membership route file
+const membershipRouter=require("./routes/Membership.route.js");
+app.use("/membership",membershipRouter)
+
+//Krushanth
+//router path to Inventry route file
 const inventoryRouter=require("./routes/Inventory.route.js");
 app.use("/inventory",inventoryRouter)
 
+//router path to Supplement route file
 const supplementRouter=require("./routes/Supplement.route.js");
 app.use("/supplement",supplementRouter)
+
+
+//Ajey
+
+
+
+//Karthik
+
+
+
+//Ashvika
+
+
+
+//Harshika
+
+
+
+//Hasmath
