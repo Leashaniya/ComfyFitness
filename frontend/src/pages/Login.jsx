@@ -65,7 +65,7 @@ const Login = () => {
     event.preventDefault();
     if (email === 'midwife@123' && password === '123456789') {
       alert("Login Success")
-      window.location.href="/home";
+      window.location.href="/subscription";
       
     } else {
       alert("Enter correct username and password")

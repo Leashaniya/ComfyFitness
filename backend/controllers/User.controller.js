@@ -358,6 +358,22 @@ const managerRegister = expressAsyncHandler(async (req, res) => {
   }
 });
 
+// const customerLogin=async (req, res) => {
+//   const { email, password } = req.body
+//   const user = await User.findOne({ email: email });
+
+//   if (user && (await bcrypt.compare(password, user.password))) {
+
+//       const userLogin = {
+//           user,
+//           token: generateToken(user._id)
+//       }
+
+//       res.status(200).json(userLogin)
+//   } else {
+//       res.status(400).json('invalid credenials');
+//   }
+// };
 
 
 
