@@ -37,7 +37,7 @@ const addFinance = async (req, res) => {
 
   const updateFinance = async (req, res) => {
     const { id } = req.params;
-    const {  salaryID, firstName, lastName,lastUpdated,salary,frequency  } =
+    const {  salaryID, firstName, lastName,lastUpdated,salary,frequency } =
       req.body;
     try {
       await Finance.findByIdAndUpdate(id, {

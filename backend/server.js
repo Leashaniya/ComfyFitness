@@ -9,7 +9,7 @@ require('dotenv').config();
 const app=express();
 
 //creating server
-const PORT =process.env.PORT || 7505;
+const PORT =process.env.PORT || 3000;
 
 app.listen(PORT,() =>{
     console.log("server is up and running on port")
