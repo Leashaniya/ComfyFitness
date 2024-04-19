@@ -24,6 +24,9 @@ function ManagerList() {
     navigate(`/user/update-manager/${id}`); // Navigate to edit page
   };
 
+  const handleCreate = (id) => {
+    navigate(`/user/register-manager`); // Navigate to edit page
+  };
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:7505/user/delete/${id}`);
@@ -38,6 +41,9 @@ function ManagerList() {
   return (
     <div>
       <h2>Managers List</h2>
+      <button onClick={() => handleCreate()}>
+                  Create a new manager
+                </button>
       <table>
         <thead>
           <tr>

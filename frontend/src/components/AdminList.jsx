@@ -23,6 +23,10 @@ function AdminList() {
     const handleEdit = (id) => {
       navigate(`/user/update-admin/${id}`); // Navigate to edit page
     };
+
+    const handleCreate = (id) => {
+      navigate(`/user/register-admin`); // Navigate to edit page
+    };
   
     const handleDelete = async (id) => {
       try {
@@ -38,6 +42,9 @@ function AdminList() {
     return (
       <div>
         <h2>Admins List</h2>
+        <button onClick={() => handleCreate()}>
+                  Create a new admin
+                </button>
         <table>
           <thead>
             <tr>
