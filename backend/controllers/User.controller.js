@@ -10,6 +10,9 @@ const validator = require("validator");
 require("dotenv").config();
 const JWT_SECRET = process.env.JWT_SECRET;
 
+
+
+
 const generateToken = (Id, role) => {
   return jwt.sign({ Id, role }, process.env.JWT_SECRET, { expiresIn: "10h" });
 };

@@ -35,3 +35,6 @@ app.use("/finance",financeRouter)
 
 const userRouter = require("./routes/User.route.js");
 app.use("/user", userRouter);
+
+const subscriptionRouter = require("./routes/Subscription.route.js");
+app.use("/subscription", subscriptionRouter);

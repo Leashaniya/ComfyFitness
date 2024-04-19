@@ -5,49 +5,59 @@ const { default: isEmail } = require("validator/lib/isEmail");
 const Schema =mongoose.Schema;
 
 //create schema instance
-const userSchema= new Schema({
+const subscriptionSchema= new Schema({
 
-  fullName: {
+  packageName: {
     type: String,
-    required: [true, "Please add a full name"],
+    required: [true, "Please add a package name"],
+    unique: true,
   },
-  contactNumber: {
+  price: {
     type: Number,
-    required: [true, "Please add a Contact number"],
-    minlength: [10, "please enter only 10 characters"],
-    maxlength: [10, "please enter only characters"],
+    required: [true, "Please add a price"],
+    min: [1, "Price cannot be negative"],
   },
-  username: {
-    type: String,
-    required: [true, "Please add an username"],
-    unique: true,
+  duration: {
+    type: Number,
+    required: [true, "Please add a duration in days"],
+    min: [1, "Duration must be at least 1 day"],
+    max: [365, "Duration cannot exceed 365 days"],
   },
-  email: {
+  description: {
     type: String,
-    required: [true, "Please add an email"],
-    unique: true,
-    lowercase: true,
-    validate: [isEmail, "Please enter a valid email"],
+    required: [true, "Please add a description"],
+    maxlength: [500, "Description cannot exceed 500 characters"],
   },
-  password: {
+  category: {
     type: String,
-    required: [true, "Please add a password"],
-    minlength: [6, "please enter more than 6 characters"],
+    required: [true, "Please select a category"],
+    enum: ["Standard", "Premium", "Deluxe"],
   },
-  role: {
-    type: String,
-    enum: ["Admin", "Manager", "Customer"],
-    required: true,
-    default: "Customer", // Default role is Customer
+  startDate: {
+    type: Date,
+    required: [true, "Please add a start date"],
+    validate: {
+      validator: function (value) {
+        // Check if start date is in the future
+        return value >= new Date();
+      },
+      message: "Start date must be in the future",
+    },
   },
-  Id: {
-    type: String,
-    required: true,
-  },
-  managerType: {
-    type: String,
+  
+  endDate: {
+    type: Date,
+    required: [true, "Please add an end date"],
+    validate: {
+      validator: function (value) {
+        // Check if end date is after start date
+        return value >= this.startDate;
+      },
+      message: "End date must be after start date",
+    },
   },
 },
+
   {
     timestamps: true,  // Enable automatic timestamping
   }
@@ -56,7 +66,7 @@ const userSchema= new Schema({
 
 //assigning to mongodb table
 //Customer will the table name 
-const User=mongoose.model("User",userSchema);
+const Subscription=mongoose.model("Subscription",subscriptionSchema);
 
 //returning Customer schema
-module.exports=User;
+module.exports=Subscription;
