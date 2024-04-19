@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 
-
-const AdminManagerLogin = () => {
+const CustomerLogin = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    role: "",
     emailOrUsername: "",
     password: "",
   });
@@ -22,42 +22,26 @@ const AdminManagerLogin = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:7505/user/login-adminAndManger",
+        "http://localhost:7505/user/login-customer",
         formData
       );
-      const { role } = response.data;
       console.log(response.data);
       // Handle successful login, such as redirecting to dashboard
-      alert("Logged in successfully!");
-      if (role === "Admin") {
-        navigate("/user/adminHome"); // Redirect to admin page
-      } else if (role === "Manager") {
-        navigate("/user/managerHome"); // Redirect to manager page
-      }
+      toast.success("Logged in successfully!");
+      alert(" You have Logged in successfully!");
+
+      navigate("/Homepage");
     } catch (error) {
       console.error("Login error:", error.response.data.error);
+      toast.error("Login error!");
       // Handle login error, such as displaying an error message
     }
   };
 
   return (
-    <div>
-      <h2>Management Login</h2>
+    <div className="container">
+      <h2>CustomerLogin</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="role">Role:</label>
-          <select
-            id="role"
-            name="role"
-            value={formData.role}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Select Role</option>
-            <option value="Admin">Admin</option>
-            <option value="Manager">Manager</option>
-          </select>
-        </div>
         <div>
           <label htmlFor="emailOrUsername">Email/Username:</label>
           <input
@@ -82,9 +66,9 @@ const AdminManagerLogin = () => {
         </div>
         <button type="submit">Login</button>
       </form>
+      <ToastContainer />
     </div>
   );
 };
 
-export default AdminManagerLogin;
-
+export default CustomerLogin;

@@ -20,6 +20,7 @@ import EditAdmin from './components/EditAdmin'
 import AdminManagerLogin from './components/AdminManagerLogin'
 import CustomerRegister from './components/CustomerRegister'
 import EditCustomer from './components/EditCustomer'
+import CustomerLogin from './components/CustomerLogin'
 
 
 
@@ -53,12 +54,12 @@ function App() {
           <Route path="/user/update-manager/:Id" element={<EditManager />} />
           {/* done */}
           <Route path="/user/register-customer" element={<CustomerRegister />}/>
-
-
-
+          {/* done */}
           <Route path="/user/update-customer/:Id" element={<EditCustomer/>} />
-
-
+          {/* done */}
+          <Route path="/user/update-admin/:Id" element={<EditAdmin />} />
+          {/* done */}
+          <Route path="/user/login-customer" element={<CustomerLogin />} />
 
 
 
@@ -66,14 +67,6 @@ function App() {
             path="/user/login-adminAndManger"
             element={<AdminManagerLogin />}
           />
-
-          <Route path="/user/update-admin/:Id" element={<EditAdmin />} />
- 
-          {/* <Route path="/user/login-customer" element={<CustomerLogin />} /> */}
-          
-          
-         
-         
 
     </Routes>
     <Footer/>
