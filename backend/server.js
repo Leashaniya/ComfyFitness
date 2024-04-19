@@ -20,7 +20,7 @@ mongoose.connect(URL,);
 
 //connecting database
 const connection =mongoose.connection;
-connection.once("open",()=>{
+connection.once("open",()=>{  
     console.log("Mongodb connection success")
 });
 
@@ -35,3 +35,31 @@ app.use("/user",userRouter)
 //router path to membership route file
 const membershipRouter=require("./routes/Membership.route.js");
 app.use("/membership",membershipRouter)
+
+//Krushanth
+//router path to Inventry route file
+const inventoryRouter=require("./routes/Inventory.route.js");
+app.use("/inventory",inventoryRouter)
+
+//router path to Supplement route file
+const supplementRouter=require("./routes/Supplement.route.js");
+app.use("/supplement",supplementRouter)
+
+
+//Ajey
+
+
+
+//Karthik
+
+
+
+//Ashvika
+
+
+
+//Harshika
+
+
+
+//Hasmath
