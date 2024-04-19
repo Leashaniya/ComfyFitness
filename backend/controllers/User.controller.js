@@ -427,6 +427,74 @@ const customerLogin = async (req, res) => {
 
 
 
+
+
+
+
+
+
+//login admin and manager
+const adminManagerLogin = async (req, res) => {
+  const { role, emailOrUsername, password } = req.body;
+
+  try {
+    // Check if all required fields are provided
+    if (!role || !emailOrUsername || !password) {
+      return res
+        .status(400)
+        .json({ error: "Please provide role, email/username, and password" });
+    }
+
+
+   // Find user by email or username and role of "Admin" or "Manager"
+   const user = await User.findOne({
+    $or: [{ email: emailOrUsername }, { username: emailOrUsername }],
+    role: role,
+  });
+
+   // Check if user exists
+   if (!user) {
+    return res.status(404).json({ error: "User not found" });
+  }
+
+  // Verify password
+  const passwordMatch = await bcrypt.compare(password, user.password);
+  if (!passwordMatch) {
+    return res.status(401).json({ error: "Incorrect password" });
+  }
+
+   // Generate token
+   const token = jwt.sign({ userId: user.Id, role: user.role }, JWT_SECRET, {
+    expiresIn: "1h",
+  })
+   // Return user details and token
+   res.status(200).json({
+    userId: user.Id,
+    fullName: user.fullName,
+    email: user.email,
+    role: user.role,
+    token: token,
+  });
+} catch (error) {
+  console.error(error);
+  res.status(500).json({ error: "Failed to login" });
+}
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //logout
 const logoutUser = async (req, res) => {
   try {
@@ -789,6 +857,8 @@ module.exports = {
 
   getAllManagers,
   getAllAdmins,
-  
+
   getUserById,
+
+  adminManagerLogin,
 };

@@ -24,6 +24,10 @@ function CustomerList() {
     navigate(`/user/update-customer/${id}`); // Navigate to edit page
   };
 
+  const handleCreate = (id) => {
+    navigate(`/user/register-customer`); // Navigate to edit page
+  };
+
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:7505/user/delete/${id}`);
@@ -38,6 +42,9 @@ function CustomerList() {
   return (
     <div>
       <h2>Customers List</h2>
+      <button onClick={() => handleCreate()}>
+                  Create a new cutomer
+                </button>
       <table>
         <thead>
           <tr>
@@ -46,7 +53,7 @@ function CustomerList() {
             <th>Contact Number</th>
             <th>Username</th>
             <th>Email</th>
-            <th>Actions</th> {/* New column for edit and delete buttons */}
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>

@@ -36,6 +36,7 @@ const {
   customerRegister,
   adminRegister,
   managerRegister,
+  adminManagerLogin,
 } = require("../controllers/User.controller");
 const { protect } = require("../middleware/authMiddleware");
 const { customerAuthentication } = require("../middleware/authentication");
@@ -75,6 +76,10 @@ router.get("/allmanagers", getAllManagers);
 router.post("/register-manager", managerRegister);
 // Update manager
 router.put("/update-manager/:Id", updateManager);
+
+
+// Login a admin or manager
+router.post("/login-adminAndManger", adminManagerLogin);
 
 
 
