@@ -20,7 +20,7 @@ mongoose.connect(URL,);
 
 //connecting database
 const connection =mongoose.connection;
-connection.once("open",()=>{  
+connection.once("open",()=>{
     console.log("Mongodb connection success")
 });
 
@@ -28,9 +28,10 @@ connection.once("open",()=>{
 app.use(cors());
 app.use(bodyParser.json());
 
-//router path to customer route file
-const inventoryRouter=require("./routes/Inventory.route.js");
-app.use("/inventory",inventoryRouter)
+//router path to user route file
+const userRouter=require("./routes/User.route.js");
+app.use("/user",userRouter)
 
-const supplementRouter=require("./routes/Supplement.route.js");
-app.use("/supplement",supplementRouter)
+//router path to membership route file
+const membershipRouter=require("./routes/Membership.route.js");
+app.use("/membership",membershipRouter)
