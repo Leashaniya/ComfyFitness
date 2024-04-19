@@ -1,14 +1,8 @@
 import { useState } from 'react'
 import React from 'react'
 import { BrowserRouter,Route,Routes } from 'react-router-dom'
-import Footer from './components/Footer/Footer'
-import Home from './pages/Home'
-import Register from './pages/Register'
-import Login from './pages/Login'
-import './App.css'
-import Subscription from './pages/Subscription'
-import Profile from './pages/Profile'
 import axios from 'axios'
+import './App.css'
 
 import ManagerRegister from './components/ManagerRegister'  
 import ManagerList from './components/ManagerList'          
@@ -21,10 +15,12 @@ import AdminManagerLogin from './components/AdminManagerLogin'
 import CustomerRegister from './components/CustomerRegister'
 import EditCustomer from './components/EditCustomer'
 import CustomerLogin from './components/CustomerLogin'
-
-
-
-
+import Footer from './components/Footer/Footer'
+import Home from './pages/Home'
+import Register from './pages/Register'
+import Login from './pages/Login'
+import Subscription from './pages/Subscription'
+import Profile from './pages/Profile'
 
 function App() {
 
@@ -39,34 +35,17 @@ function App() {
           <Route path='/login' element={<Login/>}/>
           <Route path='/subscription' element={<Subscription/>}/>
           <Route path='/profile' element={<Profile/>}/>
-
-          {/* done */}
           <Route path="/user/register-manager" element={<ManagerRegister />} />      
-          {/* done       */}
           <Route path="/user/allmanagers" element={<ManagerList />} />
-          {/* done */}
           <Route path="/user/allcustomers" element={<CustomerList />} />  
-          {/* done */}
           <Route path="/user/register-admin" element={<AdminRegister />} />
-          {/* done */}
           <Route path="/user/allAdmins" element={<AdminList />} />
-          {/* done */}
           <Route path="/user/update-manager/:Id" element={<EditManager />} />
-          {/* done */}
           <Route path="/user/register-customer" element={<CustomerRegister />}/>
-          {/* done */}
           <Route path="/user/update-customer/:Id" element={<EditCustomer/>} />
-          {/* done */}
           <Route path="/user/update-admin/:Id" element={<EditAdmin />} />
-          {/* done */}
           <Route path="/user/login-customer" element={<CustomerLogin />} />
-
-
-
-          <Route
-            path="/user/login-adminAndManger"
-            element={<AdminManagerLogin />}
-          />
+          <Route path="/user/login-adminAndManger" element={<AdminManagerLogin />}/>
 
     </Routes>
     <Footer/>
