@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 function AdminList() {
     const [admins, setAdmins] = useState([]);
+    const [searchTerm, setSearchTerm] = useState("");
     const navigate = useNavigate(); // Initialize useNavigate
   
     useEffect(() => {
@@ -38,10 +39,27 @@ function AdminList() {
         console.error("Error:", error.response.data.error);
       }
     };
+
+    const handleSearch = (e) => {
+      setSearchTerm(e.target.value);
+    };
+    const filteredAdmins = admins.filter((admin) =>
+      Object.values(admin).some(
+        (value) =>
+          typeof value === "string" &&
+          value.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    );
   
     return (
       <div>
         <h2>Admins List</h2>
+        <input
+        type="text"
+        placeholder="Search..."
+        value={searchTerm}
+        onChange={handleSearch}
+      />
         <button onClick={() => handleCreate()}>
                   Create a new admin
                 </button>
@@ -57,7 +75,7 @@ function AdminList() {
             </tr>
           </thead>
           <tbody>
-            {admins.map((admin) => (
+            {filteredAdmins.map((admin) => (
               <tr key={admin.Id}>
                 <td>{admin.Id}</td>
                 <td>{admin.fullName}</td>

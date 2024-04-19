@@ -21,6 +21,9 @@ import Register from './pages/Register'
 import Login from './pages/Login'
 import Subscription from './pages/Subscription'
 import Profile from './pages/Profile'
+import AdminHome from './components/AdminHome'
+import ManagerHome from './components/ManagerHome'
+
 
 function App() {
 
@@ -46,6 +49,10 @@ function App() {
           <Route path="/user/update-admin/:Id" element={<EditAdmin />} />
           <Route path="/user/login-customer" element={<CustomerLogin />} />
           <Route path="/user/login-adminAndManger" element={<AdminManagerLogin />}/>
+          <Route path="/user/adminHome" element={<AdminHome />}/>
+          <Route path="/user/managerHome" element={<ManagerHome />}/>
+
+
 
     </Routes>
     <Footer/>

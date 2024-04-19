@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 function CustomerList() {
   const [customers, setCustomers] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate(); // Initialize useNavigate
 
   useEffect(() => {
@@ -39,9 +40,26 @@ function CustomerList() {
     }
   };
 
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+  };
+  const filteredCustomers = customers.filter((customer) =>
+    Object.values(customer).some(
+      (value) =>
+        typeof value === "string" &&
+        value.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+  );
+
   return (
     <div>
       <h2>Customers List</h2>
+      <input
+        type="text"
+        placeholder="Search..."
+        value={searchTerm}
+        onChange={handleSearch}
+      />
       <button onClick={() => handleCreate()}>
                   Create a new cutomer
                 </button>
@@ -57,7 +75,7 @@ function CustomerList() {
           </tr>
         </thead>
         <tbody>
-          {customers.map((customer) => (
+          {filteredCustomers.map((customer) => (
             <tr key={customer.Id}>
               <td>{customer.Id}</td>
               <td>{customer.fullName}</td>

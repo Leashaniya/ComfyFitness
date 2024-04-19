@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const AdminHome = () => {
+const MangerHome = () => {
   return (
     <div className="container-fluid">
     <div className="row">
@@ -21,15 +21,11 @@ const AdminHome = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/user/allmanagers" className="nav-link">
-                Managers
+              <Link to="/user/allpackages" className="nav-link">
+                Packages
               </Link>
             </li>
-            <li className="nav-item">
-              <Link to="/user/alladmins" className="nav-link">
-                Admins
-              </Link>
-            </li>
+            
           </ul>
         </div>
       </nav>
@@ -41,4 +37,4 @@ const AdminHome = () => {
   )
 }
 
-export default AdminHome
+export default MangerHome

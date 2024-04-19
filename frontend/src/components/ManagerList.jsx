@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 function ManagerList() {
   const [managers, setManagers] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate(); // Initialize useNavigate
 
   useEffect(() => {
@@ -37,10 +38,27 @@ function ManagerList() {
       console.error("Error:", error.response.data.error);
     }
   };
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+  };
+  const filteredManagers = managers.filter((manager) =>
+    Object.values(manager).some(
+      (value) =>
+        typeof value === "string" &&
+        value.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+  );
 
   return (
     <div>
       <h2>Managers List</h2>
+      <input
+        type="text"
+        placeholder="Search..."
+        value={searchTerm}
+        onChange={handleSearch}
+      />
+
       <button onClick={() => handleCreate()}>
                   Create a new manager
                 </button>
@@ -57,7 +75,7 @@ function ManagerList() {
           </tr>
         </thead>
         <tbody>
-          {managers.map((manager) => (
+        {filteredManagers.map((manager) => (
             <tr key={manager.Id}>
               <td>{manager.Id}</td>
               <td>{manager.fullName}</td>
