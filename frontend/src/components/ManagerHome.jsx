@@ -21,7 +21,7 @@ const MangerHome = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/user/allpackages" className="nav-link">
+              <Link to="/subscription/" className="nav-link">
                 Packages
               </Link>
             </li>

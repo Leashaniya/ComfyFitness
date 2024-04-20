@@ -1,6 +1,5 @@
 //schemas are created in this file
 const mongoose=require("mongoose");
-const { default: isEmail } = require("validator/lib/isEmail");
 //create schema object
 const Schema =mongoose.Schema;
 
@@ -31,7 +30,7 @@ const subscriptionSchema= new Schema({
   category: {
     type: String,
     required: [true, "Please select a category"],
-    enum: ["Standard", "Premium", "Deluxe"],
+    enum: ["premium", "special"],
   },
   startDate: {
     type: Date,
@@ -55,6 +54,10 @@ const subscriptionSchema= new Schema({
       },
       message: "End date must be after start date",
     },
+  },
+  Id: {
+    type: String,
+    required: true,
   },
 },
 

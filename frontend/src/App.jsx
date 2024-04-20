@@ -23,6 +23,9 @@ import Subscription from './pages/Subscription'
 import Profile from './pages/Profile'
 import AdminHome from './components/AdminHome'
 import ManagerHome from './components/ManagerHome'
+import SubscriptionList from './components/SubscriptionList'
+import SubscriptionAdd from './components/SubscriptionAdd'
+import EditSubscription from './components/EditSubscription'
 
 
 function App() {
@@ -51,6 +54,9 @@ function App() {
           <Route path="/user/login-adminAndManger" element={<AdminManagerLogin />}/>
           <Route path="/user/adminHome" element={<AdminHome />}/>
           <Route path="/user/managerHome" element={<ManagerHome />}/>
+          <Route path="/subscription/" element={<SubscriptionList />} />
+          <Route path="/subscription/add" element={< SubscriptionAdd />} />   
+          <Route path="/subscription/update/:Id" element={< EditSubscription />} />
 
 
 
