@@ -51,6 +51,19 @@ function PaymentList() {
         value.toLowerCase().includes(searchTerm.toLowerCase())
     )
   );
+  const generateCSVReport = () => {
+    const csvData = "Payment ID, Payment Amount, Payment Date, Description, Address, Country\n";
+    const rows = payments.map((payment) => (
+      `${payment.Id},${payment.paymentAmount},${payment.paymentDate},${payment.pDescription},${payment.pAddressl},${payment.pCountry}\n`
+    ));
+    const csvContent = csvData + rows.join("");
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", "data:text/csv;charset=utf-8," + encodedUri);
+    link.setAttribute("download", "payment_report.csv");
+    document.body.appendChild(link);
+    link.click();
+  };
 
   return (
     <div>
@@ -95,6 +108,7 @@ function PaymentList() {
           ))}
         </tbody>
       </table>
+      <button onClick={generateCSVReport}>Download CSV Report</button>
     </div>
   );
 }

@@ -53,6 +53,20 @@ function SubscriptionList() {
     )
   );
 
+  const generateCSVReport = () => {
+    const csvData = "Package ID, Package Name, Duration, Description, Category, Start Date, End Date\n";
+    const rows = subscriptions.map((subscription) => (
+      `${subscription.Id},${subscription.packageName},${subscription.duration},${subscription.description},${subscription.category},${subscription.startDate},${subscription.endDate}\n`
+    ));
+    const csvContent = csvData + rows.join("");
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", "data:text/csv;charset=utf-8," + encodedUri);
+    link.setAttribute("download", "subscription_report.csv");
+    document.body.appendChild(link);
+    link.click();
+  };
+
   return (
     <div>
       <h2>Package List</h2>
@@ -100,6 +114,7 @@ function SubscriptionList() {
           ))}
         </tbody>
       </table>
+      <button onClick={generateCSVReport}>Download CSV Report</button>
     </div>
   );
 }
