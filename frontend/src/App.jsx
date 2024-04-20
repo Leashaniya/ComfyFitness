@@ -26,6 +26,9 @@ import ManagerHome from './components/ManagerHome'
 import SubscriptionList from './components/SubscriptionList'
 import SubscriptionAdd from './components/SubscriptionAdd'
 import EditSubscription from './components/EditSubscription'
+import EditPayment from './components/EditPayment'
+import PaymentList from './components/Payment.List'
+import PaymentAdd from './components/PaymentAdd'
 
 
 function App() {
@@ -58,6 +61,11 @@ function App() {
           <Route path="/subscription/" element={<SubscriptionList />} />
           <Route path="/subscription/add" element={< SubscriptionAdd />} />   
           <Route path="/subscription/update/:Id" element={< EditSubscription />} />
+          {/* Payment */}
+          <Route path="/payment/update/:Id" element={< EditPayment />} />
+          <Route path="/payment/add" element={< PaymentAdd/>} />   
+          <Route path="/payment/" element={<PaymentList/>} />
+
 
 
 

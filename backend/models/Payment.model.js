@@ -7,12 +7,6 @@ const Schema =mongoose.Schema;
 //create schema instance
 const paymentSchema= new Schema({
 
-  //1
-    paymentID: {
-      type: String,
-      require: true,
-      unique: true
-    },
     //2
     paymentAmount: {
         type: Number,
@@ -32,14 +26,19 @@ const paymentSchema= new Schema({
         type: String,
         require:true
     },
-    
-    //6
+
     pCountry: {
         type: String,
         require:true
-    }
-    
-});
+    },
+    Id: {
+        type: String,
+        required: true,
+      },
+},
+{
+    timestamps: true,  // Enable automatic timestamping
+  });
 
 //assigning to mongodb table
 //Customer will the table name 
