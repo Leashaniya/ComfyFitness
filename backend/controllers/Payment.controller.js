@@ -112,7 +112,7 @@ const addPayment = expressAsyncHandler(async(req, res)  => {
   do {
     // Generate a random four-digit number
     const randomNum = Math.floor(1000 + Math.random() * 9000);
-    newId = "h" + randomNum.toString();
+    newId = "PAY" + randomNum.toString();
   } while (await Payment.findOne({ id: newId })); // Check if the generated ID already exists
   Id = newId;
 
