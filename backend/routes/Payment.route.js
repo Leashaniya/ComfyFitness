@@ -9,8 +9,8 @@ const {
   deletePayment,
   getPaymentById,
 } = require("../controllers/Payment.controller.js");
-const { protect } = require("../middleware/authMiddleware.js");
-const { paymentAuthentication } = require("../middleware/authentication.js");
+// const { protect } = require("../middleware/authMiddleware.js");
+// const { paymentAuthentication } = require("../middleware/authentication.js");
 
 router.post("/add", addPayment);
 router.get("/", getAllPayment);

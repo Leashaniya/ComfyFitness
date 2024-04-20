@@ -67,7 +67,7 @@ function PaymentList() {
       <table>
         <thead>
           <tr>
-            <th>paymentID</th>
+            <th>Payment ID</th>
             <th>paymentAmount</th>
             <th>paymentDate</th>
             <th>pDescription</th>

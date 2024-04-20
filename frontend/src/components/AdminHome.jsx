@@ -31,6 +31,16 @@ const AdminHome = () => {
                 Admins
               </Link>
             </li>
+            <li className="nav-item">
+              <Link to="/subscription/" className="nav-link">
+                subscription
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/payment/" className="nav-link">
+                payment
+              </Link>
+            </li>
           </ul>
         </div>
       </nav>

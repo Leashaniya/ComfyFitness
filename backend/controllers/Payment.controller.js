@@ -112,7 +112,7 @@ const addPayment = expressAsyncHandler(async(req, res)  => {
   do {
     // Generate a random four-digit number
     const randomNum = Math.floor(1000 + Math.random() * 9000);
-    newId = "PAY" + randomNum.toString();
+    newId = "h" + randomNum.toString();
   } while (await Payment.findOne({ id: newId })); // Check if the generated ID already exists
   Id = newId;
 
@@ -161,27 +161,7 @@ const getAllPayment = async (req, res) => {
   }
 };
 
-// const updatePayment = async (req, res) => {
-//   const { id } = req.params;
-//   const {  paymentID, paymentAmount, paymentDate,pDescription,pAddressl,pCountry  } =
-//     req.body;
-//   try {
-//     await Payment.findByIdAndUpdate(id, {
-//       paymentID,
-//       paymentAmount, 
-//       paymentDate,
-//       pDescription,
-//       pAddressl,
-//       pCountry
-     
-//     });
-//     res.json({ status: "Payment updated" });
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ error: "Failed to update Payment" });
-//   }
-// };
-//updatecustomer
+
 const updatePayment = async (req, res) => {
   const paymentId = req.params.Id; // Assuming the customer's generated ID is passed as a parameter
   const { paymentAmount, paymentDate,pDescription,pAddressl,pCountry } = req.body;
@@ -227,19 +207,6 @@ const updatePayment = async (req, res) => {
 };
 
 
-// Delete a subscription by I
-
-// const deletePayment = async (req, res) => {
-//   const { id } = req.params;
-//   try {
-//     await Payment.findByIdAndDelete(id);
-//     res.json({ status: "Payment deleted" });
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ error: "Failed to delete Payment" });
-//   }
-// };
-
 const deletePayment = async (req, res) => {
   const paymentId = req.params.id; // Assuming the user's generated ID is passed as a parameter
 
@@ -259,21 +226,6 @@ const deletePayment = async (req, res) => {
   }
 };
 
-
-
-// const getPaymentById = async (req, res) => {
-//   const { id } = req.params;
-//   try {
-//     const payment= await Payment.findById(id);
-//     if (!payment) {
-//       return res.status(404).json({ error: "payment not found" });
-//     }
-//     res.json(payment);
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ error: "Failed to fetch payment" });
-//   }
-// };
 const getPaymentById = async (req, res) => {
   const paymentId = req.params.id; // Assuming the user's generated ID is passed as a parameter
 

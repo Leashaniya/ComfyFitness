@@ -20,7 +20,9 @@ function SubscriptionList() {
     };
     fetchSubscriptions();
   }, []);
+ 
 
+ 
   const handleEdit = (id) => {
     navigate(`/subscription/update/${id}`); // Navigate to edit page
   };
@@ -87,6 +89,7 @@ function SubscriptionList() {
               <td>{subscription.startDate}</td>
               <td>{subscription.endDate}</td>
               <td>
+
                 <button onClick={() => handleEdit(subscription.Id)}>Edit</button>{" "}
                 {" | "}
                 <button onClick={() => handleDelete(subscription.Id)}>

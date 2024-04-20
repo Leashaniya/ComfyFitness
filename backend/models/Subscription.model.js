@@ -29,7 +29,7 @@ const subscriptionSchema= new Schema({
   },
   category: {
     type: String,
-    required: [true, "Please select a category"],
+    required: [true, "Please add a category"],
   },
   startDate: {
     type: Date,

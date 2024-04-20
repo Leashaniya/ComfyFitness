@@ -25,14 +25,15 @@ const Footer = () => {
       <div className="footer-content">
         <div className="footer-content-left">
             <img src={assets.logo} alt=""  className="logo"/>
+            <h2>COMFY FITNESS</h2>
             <p>Your fitness journey starts here. Get in shape, stay motivated, and achieve your goals with us!</p>
         </div>
-        <div className="footer-content-center">
-            <h2>COMFY FITNESS</h2>
+        <div className="footer-content-left">
+            
             <ul>
                 {/* <li><Link to="/" onClick={()=>setMenu("home")}>Home</Link></li> */}
-                <li>Services</li>
-                <li>Subscriptions</li>
+                {/* <li>Services</li>
+                <li>Subscriptions</li> */}
                
             </ul>
         </div>

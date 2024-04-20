@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import './AdminManagerLogin.css'
 
 const AdminManagerLogin = () => {
   const navigate = useNavigate();
@@ -45,7 +45,7 @@ const AdminManagerLogin = () => {
       <h2>Management Login</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="role">Role:</label>
+          <label class=" role" htmlFor="role">Role:</label>
           <select
             id="role"
             name="role"
@@ -80,7 +80,7 @@ const AdminManagerLogin = () => {
             required
           />
         </div>
-        <button type="submit">Login</button>
+        <button  type="submit">Login</button>
       </form>
     </div>
   );

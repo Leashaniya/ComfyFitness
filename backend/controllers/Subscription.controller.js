@@ -7,8 +7,6 @@ require("dotenv").config();
 const JWT_SECRET = process.env.JWT_SECRET;
 
 
-
-
 const generateToken = (Id) => {
   return jwt.sign({ Id }, process.env.JWT_SECRET, { expiresIn: "10h" });
 };
@@ -33,7 +31,6 @@ const addSubscription = expressAsyncHandler(async (req, res) => {
 
 
   try {
-    //Create user
     const newSubscription= new Subscription({
       packageName,
       price,
@@ -61,11 +58,11 @@ const addSubscription = expressAsyncHandler(async (req, res) => {
       });
     } else {
       res.status(400);
-      throw new error("Invalid user data");
+      throw new error("Invalid package data");
     }
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Failed to register customer" });
+    res.status(500).json({ error: "Failed to create package" });
   }
 
 });
@@ -82,24 +79,6 @@ const getAllSubscription = async (req, res) => {
   }
 };
 
-// // Update a subscription by ID
-// const updateSubscription = async (req, res) => {
-//   const { id } = req.params;
-//   try {
-//     const updatedSubscription = await Subscription.findByIdAndUpdate(
-//       id,
-//       req.body,
-//       { new: true }
-//     );
-//     if (!updatedSubscription) {
-//       return res.status(404).json({ error: "Subscription not found" });
-//     }
-//     res.status(200).json(updatedSubscription);
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ error: "Failed to update subscription" });
-//   }
-// };
 
 //updatecustomer
 const updateSubscription = async (req, res) => {
@@ -149,20 +128,6 @@ const updateSubscription = async (req, res) => {
 };
 
 
-// Delete a subscription by ID
-// const deleteSubscription = async (req, res) => {
-//   const { id } = req.params;
-//   try {
-//     const deletedSubscription = await Subscription.findByIdAndDelete(id);
-//     if (!deletedSubscription) {
-//       return res.status(404).json({ error: "Subscription not found" });
-//     }
-//     res.status(200).json({ message: "Subscription deleted successfully" });
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ error: "Failed to delete subscription" });
-//   }
-// };
 const deleteSubscription = async (req, res) => {
   const subscriptionId = req.params.id; // Assuming the user's generated ID is passed as a parameter
 
@@ -182,20 +147,6 @@ const deleteSubscription = async (req, res) => {
   }
 };
 
-// Get a subscription by ID
-// const getSubscriptionById = async (req, res) => {
-//   const { id } = req.params;
-//   try {
-//     const subscription = await Subscription.findById(id);
-//     if (!subscription) {
-//       return res.status(404).json({ error: "Subscription not found" });
-//     }
-//     res.status(200).json(subscription);
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ error: "Failed to fetch subscription" });
-//   }
-// };
 
 const getSubscriptionById = async (req, res) => {
   const subscriptionId = req.params.id; // Assuming the user's generated ID is passed as a parameter

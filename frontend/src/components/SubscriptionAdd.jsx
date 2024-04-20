@@ -42,7 +42,7 @@ function SuscriptionAdd() {
       navigate("/subscription/");
     } catch (error) {
       console.error("Error:", error.response.data.error);
-      toast.error("Failed to add  subscription"); // Display error toast message
+      toast.error("Failed to add subscription"); // Display error toast message
     }
   };
 
@@ -111,8 +111,7 @@ function SuscriptionAdd() {
           />
           
         </label>
-        </div>
-        
+        </div>    
         <div className="devb"><label>
         Start Date:
           <input

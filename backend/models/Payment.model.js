@@ -34,12 +34,9 @@ const paymentSchema= new Schema({
     Id: {
         type: String,
         required: true,
-        unique: true 
       },
 },
-{
-    timestamps: true,  // Enable automatic timestamping
-  });
+);
 
 //assigning to mongodb table
 //Customer will the table name 

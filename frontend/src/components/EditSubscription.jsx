@@ -111,13 +111,9 @@ function EditSubscription() {
             value={formData.category}
             onChange={handleChange}
             required
-          />
-            
-        
+          /> 
         </label>
-        <br />
-        
-      
+        <br />      
         <label>
         startDate:
           <input
