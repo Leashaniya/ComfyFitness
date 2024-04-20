@@ -30,7 +30,6 @@ const subscriptionSchema= new Schema({
   category: {
     type: String,
     required: [true, "Please select a category"],
-    enum: ["premium", "special"],
   },
   startDate: {
     type: Date,

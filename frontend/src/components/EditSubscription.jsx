@@ -106,16 +106,14 @@ function EditSubscription() {
         <br />
         <label>
         category:
-          <select
+          <input
             name="category"
             value={formData.category}
             onChange={handleChange}
             required
-          >
-            <option value="">Select category</option>
-            <option value="Inventory">premium</option>
-            <option value="Supplier">special</option>
-          </select>
+          />
+            
+        
         </label>
         <br />
         

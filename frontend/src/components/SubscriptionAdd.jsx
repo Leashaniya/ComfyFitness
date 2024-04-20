@@ -93,16 +93,13 @@ function SuscriptionAdd() {
         <br />
         <label>
         category:
-          <select
+          <input
             name="category"
             value={formData.category}
             onChange={handleChange}
             required
-          >
-            <option value="">Select category</option>
-            <option value="premium">premium</option>
-            <option value="special">special</option>
-          </select>
+          />
+          
         </label>
         <br />
         

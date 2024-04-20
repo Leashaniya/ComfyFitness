@@ -54,6 +54,7 @@ function App() {
           <Route path="/user/login-adminAndManger" element={<AdminManagerLogin />}/>
           <Route path="/user/adminHome" element={<AdminHome />}/>
           <Route path="/user/managerHome" element={<ManagerHome />}/>
+          {/* Subscription */}
           <Route path="/subscription/" element={<SubscriptionList />} />
           <Route path="/subscription/add" element={< SubscriptionAdd />} />   
           <Route path="/subscription/update/:Id" element={< EditSubscription />} />
