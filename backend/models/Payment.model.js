@@ -34,6 +34,7 @@ const paymentSchema= new Schema({
     Id: {
         type: String,
         required: true,
+        unique: true 
       },
 },
 {

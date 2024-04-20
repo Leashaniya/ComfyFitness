@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import "./SubscriptionAdd.css";
+
+// Initial state of the form fields
 
 const initialState = {
     packageName: "", // Edit this field as needed
@@ -44,11 +47,13 @@ function SuscriptionAdd() {
   };
 
   return (
-    <div>
-      <h2>SuscriptionAdd</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="main-form">
+      <h2>Add Subscription</h2>
+      <form onSubmit={handleSubmit} className="form">
+        <div className="form1">
+      <div className="devb">
       <label>
-        packageName:
+        Package Name: 
           <input
             type="text"
             name="packageName"
@@ -57,9 +62,10 @@ function SuscriptionAdd() {
             required
           />
         </label>
-        <br />
+        </div>
+        <div className="devb">
         <label>
-        price:
+        Price:
           <input
             type="text"
             name="price"
@@ -68,31 +74,34 @@ function SuscriptionAdd() {
             required
           />
         </label>
-        <br />
+        </div>
+        <div className="devb">
         <label>
-        duration:
-          <input
+        Duration:
+        <input
             type="text"
             name="duration"
             value={formData.duration}
             onChange={handleChange}
             required
           />
-        </label>
-        <br />
-        <label>
-        description:
-          <input
+        </label></div>
+        <div className="devb">
+          <label>Description:
+          <textarea
             type="text"
             name="description"
             value={formData.description}
             onChange={handleChange}
             required
-          />
+          ></textarea>
         </label>
-        <br />
+        </div>
+        </div>
+        <div className="form2">
+        <div className="devb">
         <label>
-        category:
+        Category:
           <input
             type="text"
             name="category"
@@ -102,11 +111,10 @@ function SuscriptionAdd() {
           />
           
         </label>
-        <br />
+        </div>
         
-      
-        <label>
-        startDate:
+        <div className="devb"><label>
+        Start Date:
           <input
             type="date"
             name="startDate"
@@ -114,9 +122,9 @@ function SuscriptionAdd() {
             onChange={handleChange}
             required
           />
-        </label>
-        <label>
-        endDate:
+        </label></div>
+        <div className="devb"><label>
+        End Date:
           <input
             type="date"
             name="endDate"
@@ -124,10 +132,12 @@ function SuscriptionAdd() {
             onChange={handleChange}
             required
           />
-        </label>
-        <br />
-        <button type="submit">Add</button>
+        </label></div>
+        
+        <div><button type="submit">Add</button></div>
+        </div>
       </form>
+      
     </div>
   );
 }

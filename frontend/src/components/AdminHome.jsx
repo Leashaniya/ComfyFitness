@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import "./SubscriptionAdd.css";
 
 const AdminHome = () => {
   return (
@@ -13,7 +14,7 @@ const AdminHome = () => {
       </main>
       {/* Sidebar */}
       <nav className="col-md-2 d-none d-md-block bg-light sidebar">
-        <div className="sidebar-sticky">
+        <div className="bar">
           <ul className="nav flex-column">
             <li className="nav-item">
               <Link to="/user/allcustomers" className="nav-link">
