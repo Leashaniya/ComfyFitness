@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas'
+import '../index.css'
 
 function SubscriptionList() {
   const [subscriptions, setSubscriptions] = useState([]);
@@ -66,6 +69,22 @@ function SubscriptionList() {
     document.body.appendChild(link);
     link.click();
   };
+  const generatePDFReport = () => {
+    const input = document.getElementById("subscription-table");
+    html2canvas(input)
+      .then((canvas) => {
+        const imgData = canvas.toDataURL("image/png");
+
+        // Calculate the scale factor to fit the content inside the PDF
+        const scaleFactor = 0.5; // Adjust this value as needed
+        const width = canvas.width * scaleFactor;
+        const height = canvas.height * scaleFactor;
+
+        const pdf = new jsPDF("p", "mm", "a1");
+        pdf.addImage(imgData, "PNG", 0, 0, width, height);
+        pdf.save("subscription_report.pdf");
+      });
+  };
 
   return (
     <div>
@@ -79,7 +98,7 @@ function SubscriptionList() {
       <button onClick={() => handleCreate()}>
                   Create a new package
                 </button>
-      <table>
+      <table id="subscription-table">
         <thead>
           <tr>
             <th>Package ID</th>
@@ -103,18 +122,20 @@ function SubscriptionList() {
               <td>{subscription.startDate}</td>
               <td>{subscription.endDate}</td>
               <td>
-
+              <div >
                 <button onClick={() => handleEdit(subscription.Id)}>Edit</button>{" "}
                 {" | "}
                 <button onClick={() => handleDelete(subscription.Id)}>
                   Delete
                 </button>
+                </div>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
       <button onClick={generateCSVReport}>Download CSV Report</button>
+      <button onClick={generatePDFReport}>Download PDF Report</button>
     </div>
   );
 }

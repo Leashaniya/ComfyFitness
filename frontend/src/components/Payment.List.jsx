@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas'
+import '../index.css'
 
 function PaymentList() {
   const [payments, setPayments] = useState([]);
@@ -64,6 +67,22 @@ function PaymentList() {
     document.body.appendChild(link);
     link.click();
   };
+  const generatePDFReport = () => {
+    const input = document.getElementById("subscription-table");
+    html2canvas(input)
+      .then((canvas) => {
+        const imgData = canvas.toDataURL("image/png");
+
+        // Calculate the scale factor to fit the content inside the PDF
+        const scaleFactor = 0.5; // Adjust this value as needed
+        const width = canvas.width * scaleFactor;
+        const height = canvas.height * scaleFactor;
+
+        const pdf = new jsPDF("p", "mm", "a2");
+        pdf.addImage(imgData, "PNG", 0, 0, width, height);
+        pdf.save("subscription_report.pdf");
+      });
+  };
 
   return (
     <div>
@@ -77,7 +96,7 @@ function PaymentList() {
       <button onClick={() => handleCreate()}>
                   Create a new payment
                 </button>
-      <table>
+      <table id="subscription-table"> 
         <thead>
           <tr>
             <th>Payment ID</th>
@@ -98,17 +117,20 @@ function PaymentList() {
               <td>{payment.pAddressl}</td>
               <td>{payment.pCountry}</td>
               <td>
+                <div >
                 <button onClick={() => handleEdit(payment.Id)}>Edit</button>{" "}
                 {" | "}
                 <button onClick={() => handleDelete(payment.Id)}>
                   Delete
                 </button>
+                </div>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
       <button onClick={generateCSVReport}>Download CSV Report</button>
+      <button onClick={generatePDFReport}>Download PDF Report</button>
     </div>
   );
 }

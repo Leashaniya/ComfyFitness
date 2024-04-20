@@ -41,8 +41,7 @@ const subscriptionSchema= new Schema({
       },
       message: "Start date must be in the future",
     },
-  },
-  
+  },  
   endDate: {
     type: Date,
     required: [true, "Please add an end date"],
