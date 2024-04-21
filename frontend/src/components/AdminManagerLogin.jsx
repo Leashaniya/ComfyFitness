@@ -43,48 +43,60 @@ const AdminManagerLogin = () => {
   return (
     <div>
       <h2>Management Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label class=" role" htmlFor="role">Role:</label>
-          <select
-            id="role"
-            name="role"
-            value={formData.role}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Select Role</option>
-            <option value="Admin">Admin</option>
-            <option value="Manager">Manager</option>
-          </select>
-        </div>
-        <div>
-          <label htmlFor="emailOrUsername">Email/Username:</label>
-          <input
-            type="text"
-            id="emailOrUsername"
-            name="emailOrUsername"
-            value={formData.emailOrUsername}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button  type="submit">Login</button>
+      <form className="login-form" onSubmit={handleSubmit}>
+        <table className="login-table">
+          <tbody>
+            <tr>
+              <td><label htmlFor="role">Role:</label></td>
+              <td>
+                <select
+                  id="role"
+                  name="role"
+                  value={formData.role}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="">Select Role</option>
+                  <option value="Admin">Admin</option>
+                  <option value="Manager">Manager</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td><label htmlFor="emailOrUsername">Email/Username:</label></td>
+              <td>
+                <input
+                  type="text"
+                  id="emailOrUsername"
+                  name="emailOrUsername"
+                  value={formData.emailOrUsername}
+                  onChange={handleChange}
+                  required
+                />
+              </td>
+            </tr>
+            <tr>
+              <td><label htmlFor="password">Password:</label></td>
+              <td>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  required
+                />
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><button type="submit">Login</button></td>
+            </tr>
+          </tbody>
+        </table>
       </form>
     </div>
   );
 };
 
 export default AdminManagerLogin;
-
