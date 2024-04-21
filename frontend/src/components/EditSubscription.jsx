@@ -57,87 +57,110 @@ function EditSubscription() {
   };
 
   return (
+    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}>
     <div>
       <h2>Edit Subscription</h2>
       <form onSubmit={handleSubmit}>
-        <label>
-        packageName:
-          <input
-            type="text"
-            name="packageName"
-            value={formData.packageName}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <br />
-        <label>
-        price:
-          <input
-            type="text"
-            name="price"
-            value={formData.price}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <br />
-        <label>
-        duration:
-          <input
-            type="text"
-            name="duration"
-            value={formData.duration}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <br />
-        <label>
-        description:
-          <input
-            type="text"
-            name="description"
-            value={formData.description}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <br />
-        <label>
-        category:
-          <input
-            name="category"
-            value={formData.category}
-            onChange={handleChange}
-            required
-          /> 
-        </label>
-        <br />      
-        <label>
-        startDate:
-          <input
-            type="date"
-            name="startDate"
-            value={formData.startDate}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <label>
-        endDate:
-          <input
-            type="date"
-            name="endDate"
-            value={formData.endDate}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <br />
+        <table>
+          <tbody>
+            <tr>
+              <td>packageName:</td>
+              <td>
+                <input
+                  type="text"
+                  name="packageName"
+                  value={formData.packageName}
+                  onChange={handleChange}
+                  style={{ width: "300px" }} // Adjust the width as needed
+                  required
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>price:</td>
+              <td>
+                <input
+                  type="text"
+                  name="price"
+                  value={formData.price}
+                  onChange={handleChange}
+                  style={{ width: "300px" }} // Adjust the width as needed
+                  required
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>duration:</td>
+              <td>
+                <input
+                  type="text"
+                  name="duration"
+                  value={formData.duration}
+                  onChange={handleChange}
+                  style={{ width: "300px" }} // Adjust the width as needed
+                  required
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>description:</td>
+              <td>
+                <input
+                  type="text"
+                  name="description"
+                  value={formData.description}
+                  onChange={handleChange}
+                  style={{ width: "300px" }} // Adjust the width as needed
+                  required
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>category:</td>
+              <td>
+                <input
+                  name="category"
+                  value={formData.category}
+                  onChange={handleChange}
+                  style={{ width: "300px" }} // Adjust the width as needed
+                  required
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>startDate:</td>
+              <td>
+                <input
+                  type="date"
+                  name="startDate"
+                  value={formData.startDate}
+                  onChange={handleChange}
+                  style={{ width: "300px" }} // Adjust the width as needed
+                  required
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>endDate:</td>
+              <td>
+                <input
+                  type="date"
+                  name="endDate"
+                  value={formData.endDate}
+                  onChange={handleChange}
+                  style={{ width: "300px" }} // Adjust the width as needed
+                  required
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
         <button type="submit">Update</button>
       </form>
     </div>
+  </div>
+  
+
   );
 }
 

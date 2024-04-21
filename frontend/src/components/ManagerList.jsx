@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
+import '../index.css'
 
 function ManagerList() {
   const [managers, setManagers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchManagers = async () => {
@@ -22,12 +23,13 @@ function ManagerList() {
   }, []);
 
   const handleEdit = (id) => {
-    navigate(`/user/update-manager/${id}`); // Navigate to edit page
+    navigate(`/user/update-manager/${id}`);
   };
 
   const handleCreate = (id) => {
-    navigate(`/user/register-manager`); // Navigate to edit page
+    navigate(`/user/register-manager`);
   };
+
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:7505/user/delete/${id}`);
@@ -38,9 +40,11 @@ function ManagerList() {
       console.error("Error:", error.response.data.error);
     }
   };
+
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
   };
+
   const filteredManagers = managers.filter((manager) =>
     Object.values(manager).some(
       (value) =>
@@ -58,11 +62,10 @@ function ManagerList() {
         value={searchTerm}
         onChange={handleSearch}
       />
-
       <button onClick={() => handleCreate()}>
-                  Create a new manager
-                </button>
-      <table>
+        Create a new manager
+      </button>
+      <table className="manager-table">
         <thead>
           <tr>
             <th>Manager ID</th>
@@ -71,11 +74,11 @@ function ManagerList() {
             <th>Username</th>
             <th>Email</th>
             <th>Manager Type</th>
-            <th>Actions</th> {/* New column for edit and delete buttons */}
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-        {filteredManagers.map((manager) => (
+          {filteredManagers.map((manager) => (
             <tr key={manager.Id}>
               <td>{manager.Id}</td>
               <td>{manager.fullName}</td>
@@ -85,7 +88,6 @@ function ManagerList() {
               <td>{manager.managerType}</td>
               <td>
                 <button onClick={() => handleEdit(manager.Id)}>Edit</button>{" "}
-                {" | "}
                 <button onClick={() => handleDelete(manager.Id)}>Delete</button>
               </td>
             </tr>
@@ -97,4 +99,3 @@ function ManagerList() {
 }
 
 export default ManagerList;
-

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas'
 import '../index.css'
@@ -8,7 +8,7 @@ import '../index.css'
 function PaymentList() {
   const [payments, setPayments] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchPayments = async () => {
@@ -25,20 +25,19 @@ function PaymentList() {
   }, []);
 
   const handleEdit = (id) => {
-    navigate(`/payment/update/${id}`); // Navigate to edit page
+    navigate(`/payment/update/${id}`);
   };
 
-  
   const handleCreate = (id) => {
-    navigate('/payment/add'); // Navigate to edit page
+    navigate('/payment/add');
   };
 
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:7505/payment/delete/${id}`);
       setPayments(payments.filter((payment) => payment.Id !== id));
-      console.log("payment deleted successfully!");
-      alert("payment deleted successfully!");
+      console.log("Payment deleted successfully!");
+      alert("Payment deleted successfully!");
     } catch (error) {
       console.error("Error:", error.response.data.error);
     }
@@ -54,6 +53,10 @@ function PaymentList() {
         value.toLowerCase().includes(searchTerm.toLowerCase())
     )
   );
+  
+  // Calculate total payment count
+  const totalPaymentCount = payments.length;
+
   const generateCSVReport = () => {
     const csvData = "Payment ID, Payment Amount, Payment Date, Description, Address, Country\n";
     const rows = payments.map((payment) => (
@@ -72,39 +75,39 @@ function PaymentList() {
     html2canvas(input)
       .then((canvas) => {
         const imgData = canvas.toDataURL("image/png");
-
-        // Calculate the scale factor to fit the content inside the PDF
-        const scaleFactor = 0.5; // Adjust this value as needed
+        const scaleFactor = 0.5;
         const width = canvas.width * scaleFactor;
         const height = canvas.height * scaleFactor;
-
-        const pdf = new jsPDF("p", "mm", "a2");
+        const pdf = new jsPDF("p", "mm", "a1");
         pdf.addImage(imgData, "PNG", 0, 0, width, height);
         pdf.save("subscription_report.pdf");
       });
   };
 
   return (
-    <div>
-      <h2>Payment List</h2>
+    <div className="payment-list-container">
+      <h2 className="payment-list-header">Payment List</h2>
+      
       <input
+        className="search-input"
         type="text"
         placeholder="Search..."
         value={searchTerm}
         onChange={handleSearch}
       />
-      <button onClick={() => handleCreate()}>
-                  Create a new payment
-                </button>
-      <table id="subscription-table"> 
+      <button className="create-button" onClick={() => handleCreate()}>
+        Create a new payment
+      </button>
+      <table className="payment-table" id="subscription-table">
         <thead>
           <tr>
             <th>Payment ID</th>
-            <th>paymentAmount</th>
-            <th>paymentDate</th>
-            <th>pDescription</th>
-            <th>pAddressl</th>
-            <th>pCountry</th>
+            <th>Payment Amount</th>
+            <th>Payment Date</th>
+            <th>Description</th>
+            <th>Address</th>
+            <th>Country</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -116,21 +119,20 @@ function PaymentList() {
               <td>{payment.pDescription}</td>
               <td>{payment.pAddressl}</td>
               <td>{payment.pCountry}</td>
-              <td>
-                <div >
+              <td className="action-buttons">
                 <button onClick={() => handleEdit(payment.Id)}>Edit</button>{" "}
-                {" | "}
-                <button onClick={() => handleDelete(payment.Id)}>
-                  Delete
-                </button>
-                </div>
+                <button onClick={() => handleDelete(payment.Id)}>Delete</button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      <button onClick={generateCSVReport}>Download CSV Report</button>
-      <button onClick={generatePDFReport}>Download PDF Report</button>
+      <div className="report-buttons">
+        <button onClick={generateCSVReport}>Download CSV Report</button>
+        <button onClick={generatePDFReport}>Download PDF Report</button>
+      </div>
+      <br></br>
+      <p>Total Payments: {totalPaymentCount}</p>
     </div>
   );
 }

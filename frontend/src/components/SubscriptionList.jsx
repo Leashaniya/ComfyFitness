@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas'
 import '../index.css'
@@ -8,7 +8,8 @@ import '../index.css'
 function SubscriptionList() {
   const [subscriptions, setSubscriptions] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
+  const [totalDuration, setTotalDuration] = useState(0);
 
   useEffect(() => {
     const fetchSubscriptions = async () => {
@@ -17,27 +18,32 @@ function SubscriptionList() {
           "http://localhost:7505/subscription/"
         );
         setSubscriptions(response.data);
+        calculateTotalDuration(response.data);
       } catch (error) {
         console.error("Error:", error.response.data.error);
       }
     };
     fetchSubscriptions();
   }, []);
- 
 
- 
+  const calculateTotalDuration = (subscriptions) => {
+    const total = subscriptions.reduce((acc, curr) => acc + parseInt(curr.duration), 0);
+    setTotalDuration(total);
+  };
+
   const handleEdit = (id) => {
-    navigate(`/subscription/update/${id}`); // Navigate to edit page
+    navigate(`/subscription/update/${id}`);
   };
 
   const handleCreate = (id) => {
-    navigate(`/subscription/add`); // Navigate to edit page
+    navigate(`/subscription/add`);
   };
 
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:7505/subscription/delete/${id}`);
       setSubscriptions(subscriptions.filter((subscription) => subscription.Id !== id));
+      calculateTotalDuration(subscriptions.filter((subscription) => subscription.Id !== id));
       console.log("package deleted successfully!");
       alert("package deleted successfully!");
     } catch (error) {
@@ -87,18 +93,20 @@ function SubscriptionList() {
   };
 
   return (
-    <div>
-      <h2>Package List</h2>
+    <div className="subscription-list-container">
+      <h2 className="subscription-list-header">Package List</h2>
+      <p>Total Duration: {totalDuration}</p>
       <input
+        className="search-input"
         type="text"
         placeholder="Search..."
         value={searchTerm}
         onChange={handleSearch}
       />
-      <button onClick={() => handleCreate()}>
-                  Create a new package
-                </button>
-      <table id="subscription-table">
+      <button className="create-button" onClick={() => handleCreate()}>
+        Create a new package
+      </button>
+      <table className="subscription-table" id="subscription-table">
         <thead>
           <tr>
             <th>Package ID</th>
@@ -108,7 +116,7 @@ function SubscriptionList() {
             <th>category</th>
             <th>startDate</th>
             <th>endDate</th>
-
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -121,24 +129,20 @@ function SubscriptionList() {
               <td>{subscription.category}</td>
               <td>{subscription.startDate}</td>
               <td>{subscription.endDate}</td>
-              <td>
-              <div >
+              <td className="action-buttons">
                 <button onClick={() => handleEdit(subscription.Id)}>Edit</button>{" "}
-                {" | "}
-                <button onClick={() => handleDelete(subscription.Id)}>
-                  Delete
-                </button>
-                </div>
+                <button onClick={() => handleDelete(subscription.Id)}>Delete</button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      <button onClick={generateCSVReport}>Download CSV Report</button>
-      <button onClick={generatePDFReport}>Download PDF Report</button>
+      <div className="report-buttons">
+        <button onClick={generateCSVReport}>Download CSV Report</button>
+        <button onClick={generatePDFReport}>Download PDF Report</button>
+      </div>
     </div>
   );
 }
 
 export default SubscriptionList;
-

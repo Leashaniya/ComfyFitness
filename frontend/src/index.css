@@ -35,3 +35,90 @@ a{
 .leasha{
   display: none;
 }
+
+/* Define unique styles for the Payment List component */
+
+.payment-list-container {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+.payment-list-header {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.search-input {
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 300px;
+}
+
+.create-button {
+  padding: 10px 20px;
+  background-color: #005f75;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.create-button:hover {
+  background-color: #005f75;
+}
+
+.payment-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+
+.payment-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.payment-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.payment-table tr:hover {
+  background-color: #ddd;
+}
+
+.action-buttons button {
+  padding: 6px 12px;
+  margin-right: 5px;
+  background-color: #008CBA;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.action-buttons button:hover {
+  background-color: #005f75;
+}
+
+.report-buttons button {
+  margin-right: 10px;
+  padding: 10px 20px;
+  background-color: #005f75;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.report-buttons button:hover {
+  background-color: #005f75;
+}

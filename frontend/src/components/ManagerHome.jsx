@@ -24,6 +24,10 @@ const MangerHome = () => {
               <Link to="/subscription/" className="nav-link">
                 Packages
               </Link>
+            </li><li className="nav-item">
+              <Link to="/payment/" className="nav-link">
+                Payment
+              </Link>
             </li>
             
           </ul>
