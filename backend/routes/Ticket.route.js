@@ -2,22 +2,22 @@ const express = require("express");
 const router = express.Router();
 
 const {
-  addUser,
-  getAllUser,
-  getUserByEmail,
-  updateUser,
-  deleteUser,
+  addTicket,
+  getAllTicket,
+  getTicketByEmail,
+  updateTicket,
+  deleteTicket,
   getMe,
   // changePassword,
   // loginUser,
   // searchUser,
-} = require("../controllers/User.controller.js");
+} = require("../controllers/Ticket.controller.js");
 
-router.post("/add", addUser);
-router.get("/", getAllUser);
-router.get("/get/:email", getUserByEmail);
-router.patch("/update/:email", updateUser);
-router.delete("/delete/:email", deleteUser);
+router.post("/add", addTicket);
+router.get("/", getAllTicket);
+router.get("/get/:email", getTicketByEmail);
+router.patch("/update/:email", updateTicket);
+router.delete("/delete/:email", deleteTicket);
 router.get("/auth/me",getMe);
 // router.patch("/changepassword/:email",changePassword);
 // router.post("/login",loginUser);

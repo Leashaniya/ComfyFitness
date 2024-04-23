@@ -1,13 +1,12 @@
-//schemas are created in this file
 const mongoose=require("mongoose");
 
 //create schema object
 const Schema =mongoose.Schema;
 
 //create schema instance
-const userSchema= new Schema({
+const ticketSchema= new Schema({
 
-    userID: {
+    ticketID: {
         type: String,
         required: true,
       },
@@ -19,28 +18,20 @@ const userSchema= new Schema({
         type: String,
         required: true,
       },
-      phone: {
+      feedback: {
+        type: String,
+        required: true,
+      },
+      rating: {
         type: Number,
         required: true,
-      },
-      username: {
-        type: String,
-        required: true,
-      },
-      password: {
-        type: String,
-        required: true,
-      },
-      role: {
-        type: String,
-        required : true
       },
     
 });
 
 //assigning to mongodb table
 //User will the table name 
-const User=mongoose.model("User",userSchema);
+const Ticket=mongoose.model("Ticket", ticketSchema);
 
 //returning User schema
-module.exports=User;
+module.exports=Ticket;
