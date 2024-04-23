@@ -40,6 +40,12 @@ const paymentSchema= new Schema({
         type: String,
         required: [true, "Please add a payment country"],
     },
+    paymentType:{
+        type: String,
+        required: [true, "Please add a payment type"],
+        enum: ["Online","Offline"],
+        default: "Offline",
+    },
     Id: {
         type: String,
         required: true,

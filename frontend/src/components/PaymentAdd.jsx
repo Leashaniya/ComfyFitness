@@ -9,6 +9,7 @@ const initialState = {
     pDescription: "",
     pAddressl:"",
     pCountry: "",
+    paymentType:""
 };
 
 function PaymentAdd() {
@@ -101,6 +102,21 @@ function PaymentAdd() {
           
         </label>
         <br />
+
+        <label>
+        paymentType:
+        <select
+            name="paymentType"
+            value={formData.paymentType}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Select payment Type</option>
+            <option value="Online">Online</option>
+            <option value="Offline">Offline</option>
+          </select>
+          
+        </label>
         
         <br />
         <button type="submit">Add</button>
@@ -110,3 +126,7 @@ function PaymentAdd() {
 }
 
 export default PaymentAdd;
+
+
+
+

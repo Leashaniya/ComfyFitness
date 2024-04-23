@@ -1,4 +1,5 @@
 
+
 const Payment=require("../models/Payment.model")
 const bcrypt=require('bcrypt');
 const expressAsyncHandler=require("express-async-handler");
@@ -11,10 +12,10 @@ const generateToken = (Id) => {
 };
 
 const addPayment = expressAsyncHandler(async(req, res)  => {
-  const {paymentAmount, paymentDate,pDescription,pAddressl,pCountry } =req.body;
+  const {paymentAmount, paymentDate,pDescription,pAddressl,pCountry,paymentType } =req.body;
 
   //Validation
-  if (!paymentAmount|| !paymentDate || !pDescription || !pAddressl || !pCountry) {
+  if (!paymentAmount|| !paymentDate || !pDescription || !pAddressl || !pCountry ||!paymentType) {
     res.status(400);
     throw new Error("Please include all fields");
   }
@@ -36,6 +37,7 @@ try{
      pDescription,
      pAddressl,
      pCountry,
+     paymentType,
      Id,
   });
   await newPayment.save();
@@ -48,6 +50,7 @@ try{
       pDescription: newPayment.pDescription,
       pAddressl: newPayment.pAddressl,
       pCountry: newPayment.pCountry,
+      paymentType: newPayment.paymentType,
       token: generateToken(newPayment._id),
       message: "paid successfully",
     });
@@ -76,11 +79,11 @@ const getAllPayment = async (req, res) => {
 
 const updatePayment = async (req, res) => {
   const paymentId = req.params.Id; // Assuming the customer's generated ID is passed as a parameter
-  const { paymentAmount, paymentDate,pDescription,pAddressl,pCountry } = req.body;
+  const { paymentAmount, paymentDate,pDescription,pAddressl,pCountry,paymentType } = req.body;
 
   try {
     // Check if all required fields are present
-    if (!paymentAmount || !paymentDate || !pDescription || !pAddressl || !pCountry ) {
+    if (!paymentAmount || !paymentDate || !pDescription || !pAddressl || !pCountry||!paymentType ) {
       return res.status(400).json({ error: "Please include all fields" });
     }
     // Find the customer by generated ID
@@ -97,6 +100,7 @@ const updatePayment = async (req, res) => {
     if (pDescription) payment.pDescription = pDescription;
     if (pAddressl) payment.pAddressl = pAddressl;
     if (pCountry) payment.pCountry = pCountry;
+    if (paymentType) payment.paymentType = paymentType;
 
 
     // Save updated customer
@@ -109,6 +113,7 @@ const updatePayment = async (req, res) => {
       pDescription: payment.pDescription,
       pAddressl: payment.pAddressl,
       pCountry: payment.pCountry,
+      paymentType: payment.paymentType,
       message: "payment details updated successfully",
     });
 
