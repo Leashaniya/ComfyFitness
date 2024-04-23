@@ -1,10 +1,9 @@
-
-
 const Payment=require("../models/Payment.model")
 const bcrypt=require('bcrypt');
 const expressAsyncHandler=require("express-async-handler");
 const jwt=require('jsonwebtoken');
 const validator=require("validator");
+require("dotenv").config();
 const JWT_SECRET=process.env.JWT_SECRET;
 
 const generateToken = (Id) => {
@@ -44,7 +43,7 @@ try{
 
   if (newPayment) {
     res.status(201).json({
-      id: newPayment.Id,
+      id: newPayment.paymentID,
       paymentAmount: newPayment.paymentAmount,
       paymentDate: newPayment.paymentDate,
       pDescription: newPayment.pDescription,
