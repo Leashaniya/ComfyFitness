@@ -118,13 +118,19 @@ function EditSubscription() {
             <tr>
               <td>category:</td>
               <td>
-                <input
-                  name="category"
-                  value={formData.category}
-                  onChange={handleChange}
-                  style={{ width: "300px" }} // Adjust the width as needed
-                  required
-                />
+              <label>
+          Category Type:
+          <select
+            name="category"
+            value={formData.category}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Select category Type</option>
+            <option value="Special">Special</option>
+            <option value="Normal">Normal</option>
+          </select>
+        </label>
               </td>
             </tr>
             <tr>

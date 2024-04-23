@@ -104,6 +104,7 @@ function EditManager() {
             <option value="Supplier">Supplier</option>
             <option value="Feedback">Feedback</option>
             <option value="Finance">Finance</option>
+
             <option value="Order">Order</option>
           </select>
         </label>

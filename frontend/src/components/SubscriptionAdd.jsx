@@ -101,15 +101,17 @@ function SuscriptionAdd() {
         <div className="form2">
         <div className="devb">
         <label>
-        Category:
-          <input
-            type="text"
+          Category Type:
+          <select
             name="category"
             value={formData.category}
             onChange={handleChange}
             required
-          />
-          
+          >
+            <option value="">Select category Type</option>
+            <option value="Special">Special</option>
+            <option value="Normal">Normal</option>
+          </select>
         </label>
         </div>    
         <div className="devb"><label>

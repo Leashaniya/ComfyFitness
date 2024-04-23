@@ -29,7 +29,9 @@ const subscriptionSchema= new Schema({
   },
   category: {
     type: String,
+    enum: ["Special","Normal"],
     required: [true, "Please add a type"],
+    default: "Special",
   },
   startDate: {
     type: Date,
