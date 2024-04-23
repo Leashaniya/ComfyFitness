@@ -12,6 +12,7 @@ function EditPayment() {
     pDescription: "",
     pAddressl:"",
     pCountry: "",
+    paymentType:"",
   });
 
   useEffect(() => {
@@ -111,6 +112,21 @@ function EditPayment() {
             onChange={handleChange}
             required
           />
+          
+        </label>
+        <br />
+        <label>
+        paymentType:
+        <select
+            name="paymentType"
+            value={formData.paymentType}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Select payment Type</option>
+            <option value="Online">Online</option>
+            <option value="Offline">Offline</option>
+          </select>
           
         </label>
         <br />
