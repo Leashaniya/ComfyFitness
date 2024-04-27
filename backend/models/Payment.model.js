@@ -1,12 +1,6 @@
-//schemas are created in this file
 const mongoose=require("mongoose");
-
-//create schema object
 const Schema =mongoose.Schema;
-
-//create schema instance
 const paymentSchema= new Schema({
-
     //2
     paymentAmount: {
         type: Number,
@@ -54,9 +48,5 @@ const paymentSchema= new Schema({
 
 );
 
-//assigning to mongodb table
-//Customer will the table name 
 const Payment=mongoose.model("Payment",paymentSchema);
-
-//returning Customer schema
 module.exports=Payment;

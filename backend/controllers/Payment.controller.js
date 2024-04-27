@@ -63,8 +63,6 @@ try{
 }
 
 });
-
-
 const getAllPayment = async (req, res) => {
   try {
     const payments = await Payment.find();
@@ -74,8 +72,6 @@ const getAllPayment = async (req, res) => {
     res.status(500).json({ error: "Failed to fetch payments" });
   }
 };
-
-
 const updatePayment = async (req, res) => {
   const paymentId = req.params.Id; // Assuming the customer's generated ID is passed as a parameter
   const { paymentAmount, paymentDate,pDescription,pAddressl,pCountry,paymentType } = req.body;
@@ -121,7 +117,6 @@ const updatePayment = async (req, res) => {
     res.status(500).json({ error: "Failed to update payment details" });
 }
 };
-
 
 const deletePayment = async (req, res) => {
   const paymentId = req.params.id; // Assuming the user's generated ID is passed as a parameter
