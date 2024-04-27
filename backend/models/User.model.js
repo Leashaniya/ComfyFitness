@@ -1,12 +1,7 @@
-//schemas are created in this file
 const mongoose=require("mongoose");
 const { default: isEmail } = require("validator/lib/isEmail");
-//create schema object
 const Schema =mongoose.Schema;
-
-//create schema instance
 const userSchema= new Schema({
-
   fullName: {
     type: String,
     required: [true, "Please add a full name"],
@@ -50,13 +45,10 @@ const userSchema= new Schema({
 },
   {
     timestamps: true,  // Enable automatic timestamping
-  }
-    
+  }  
 );
-
 //assigning to mongodb table
 //Customer will the table name 
 const User=mongoose.model("User",userSchema);
-
 //returning Customer schema
 module.exports=User;

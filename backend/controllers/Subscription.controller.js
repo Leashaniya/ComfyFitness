@@ -80,9 +80,9 @@ const getAllSubscription = async (req, res) => {
 };
 
 
-//updatecustomer
+//updatesubscription
 const updateSubscription = async (req, res) => {
-  const subscriptionId = req.params.Id; // Assuming the customer's generated ID is passed as a parameter
+  const subscriptionId = req.params.Id; 
   const { packageName,price,duration,description,category,startDate,endDate } = req.body;
 
   try {
@@ -90,15 +90,15 @@ const updateSubscription = async (req, res) => {
     if (!packageName || !price || !duration || !description || !category || !startDate || !endDate) {
       return res.status(400).json({ error: "Please include all fields" });
     }
-    // Find the customer by generated ID
+
     const subscription = await Subscription.findOne({ Id: subscriptionId });
 
-    // Check if customer exists
+    // Check if subscription exists
     if (!subscription) {
       return res.status(404).json({ error: "subscription not found" });
     }
 
-    // Update customer fields
+    // Update subscription fields
     if (packageName) subscription.packageName = packageName;
     if (price) subscription.price = price;
     if (duration) subscription.duration = duration;
@@ -107,7 +107,7 @@ const updateSubscription = async (req, res) => {
     if (startDate) subscription.startDate = startDate;
     if (endDate) subscription.endDate = endDate;
 
-    // Save updated customer
+    // Save updated subscription
     await subscription.save();
 
     res.status(200).json({
@@ -132,7 +132,7 @@ const deleteSubscription = async (req, res) => {
   const subscriptionId = req.params.id; // Assuming the user's generated ID is passed as a parameter
 
   try {
-    // Find the user by generated ID and role, then delete
+  
     const deletedSubscription = await Subscription.findOneAndDelete({ Id: subscriptionId });
 
     if (!deletedSubscription) {
@@ -149,7 +149,7 @@ const deleteSubscription = async (req, res) => {
 
 
 const getSubscriptionById = async (req, res) => {
-  const subscriptionId = req.params.id; // Assuming the user's generated ID is passed as a parameter
+  const subscriptionId = req.params.id; 
 
   try {
     const subscription = await Subscription.findOne({ Id: subscriptionId })

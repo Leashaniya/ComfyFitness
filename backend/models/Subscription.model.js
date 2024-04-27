@@ -1,11 +1,6 @@
-//schemas are created in this file
 const mongoose=require("mongoose");
-//create schema object
 const Schema =mongoose.Schema;
-
-//create schema instance
 const subscriptionSchema= new Schema({
-
   packageName: {
     type: String,
     required: [true, "Please add a package name"],
@@ -60,16 +55,12 @@ const subscriptionSchema= new Schema({
     required: true,
   },
 },
-
   {
     timestamps: true,  // Enable automatic timestamping
-  }
-    
+  } 
 );
-
 //assigning to mongodb table
 //Customer will the table name 
 const Subscription=mongoose.model("Subscription",subscriptionSchema);
-
 //returning Customer schema
 module.exports=Subscription;

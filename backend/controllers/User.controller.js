@@ -10,9 +10,6 @@ const validator = require("validator");
 require("dotenv").config();
 const JWT_SECRET = process.env.JWT_SECRET;
 
-
-
-
 const generateToken = (Id, role) => {
   return jwt.sign({ Id, role }, process.env.JWT_SECRET, { expiresIn: "10h" });
 };
@@ -321,13 +318,6 @@ const customerLogin = async (req, res) => {
 };
 
 
-
-
-
-
-
-
-
 //login admin and manager
 const adminManagerLogin = async (req, res) => {
   const { role, emailOrUsername, password } = req.body;
@@ -376,20 +366,6 @@ const adminManagerLogin = async (req, res) => {
 }
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //logout
 const logoutUser = async (req, res) => {
   try {
@@ -403,8 +379,6 @@ const logoutUser = async (req, res) => {
     res.status(500).json({ success: false, message: "Server error" });
   }
 };
-
-
 
 //updatecustomer
 const updateCustomer = async (req, res) => {
@@ -540,9 +514,6 @@ const updateAdmin = async (req, res) => {
     res.status(500).json({ error: "Failed to update admin details" });
   }
 };
-
-
-
 
 //update manager
 const updateManager = async (req, res) => {
