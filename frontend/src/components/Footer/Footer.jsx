@@ -30,12 +30,10 @@ const Footer = () => {
         </div>
         <div className="footer-content-left">
             
-            <ul>
-                {/* <li><Link to="/" onClick={()=>setMenu("home")}>Home</Link></li> */}
-                {/* <li>Services</li>
-                <li>Subscriptions</li> */}
+            {/* <ul>
+                <li><Link to="/" onClick={()=>setMenu("home")}>Home</Link></li> 
                
-            </ul>
+            </ul> */}
         </div>
         <div className="footer-content-right">
             <h2>GET IN TOUCH</h2>

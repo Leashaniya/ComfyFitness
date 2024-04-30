@@ -3,7 +3,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color:#353c55 ;
+    background-color:rgb(1, 11, 68) ;
 }
 .navbar .logo{
     width: 150px;
