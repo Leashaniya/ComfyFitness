@@ -29,6 +29,7 @@ import EditSubscription from './components/EditSubscription'
 import EditPayment from './components/EditPayment'
 import PaymentList from './components/Payment.List'
 import PaymentAdd from './components/PaymentAdd'
+import MembershipList from './components/MembershipList'
 
 
 function App() {
@@ -65,7 +66,8 @@ function App() {
           <Route path="/payment/update/:Id" element={< EditPayment />} />
           <Route path="/payment/add" element={< PaymentAdd/>} />   
           <Route path="/payment/" element={<PaymentList/>} />
-
+          {/* membership */}
+          <Route path="/membership/" element={<MembershipList/>} />
 
 
 
