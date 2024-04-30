@@ -87,24 +87,6 @@ function CustomerRegister() {
           />
         </label>
         <br />
-        {/* <label>
-          Manager Type:
-          <select
-            name="managerType"
-            value={formData.managerType}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Select Manager Type</option>
-            <option value="Inventory">Inventory</option>
-            <option value="Supplier">Supplier</option>
-            <option value="Transport">Transport</option>
-            <option value="Feedback">Feedback</option>
-            <option value="Finance">Finance</option>
-            <option value="Employee">Employee</option>
-            <option value="Order">Order</option>
-          </select>
-        </label> */}
         <br />
         <label>
           Email:
