@@ -60,7 +60,7 @@ const subscriptionSchema= new Schema({
   } 
 );
 //assigning to mongodb table
-//Customer will the table name 
+//Subscription will the table name 
 const Subscription=mongoose.model("Subscription",subscriptionSchema);
-//returning Customer schema
+//returning Subscription schema
 module.exports=Subscription;

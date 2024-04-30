@@ -73,7 +73,7 @@ const getAllPayment = async (req, res) => {
   }
 };
 const updatePayment = async (req, res) => {
-  const paymentId = req.params.Id; // Assuming the customer's generated ID is passed as a parameter
+  const paymentId = req.params.Id; // Assuming the  generated ID is passed as a parameter
   const { paymentAmount, paymentDate,pDescription,pAddressl,pCountry,paymentType } = req.body;
 
   try {
@@ -81,15 +81,15 @@ const updatePayment = async (req, res) => {
     if (!paymentAmount || !paymentDate || !pDescription || !pAddressl || !pCountry||!paymentType ) {
       return res.status(400).json({ error: "Please include all fields" });
     }
-    // Find the customer by generated ID
+    // Find the payment by generated ID
     const payment = await Payment.findOne({ Id: paymentId });
 
-    // Check if customer exists
+    // Check if payment exists
     if (!payment) {
       return res.status(404).json({ error: "payment not found" });
     }
 
-    // Update customer fields
+    // Update payment fields
     if (paymentAmount) payment.paymentAmount = paymentAmount;
     if (paymentDate) payment.paymentDate = paymentDate;
     if (pDescription) payment.pDescription = pDescription;
@@ -98,7 +98,7 @@ const updatePayment = async (req, res) => {
     if (paymentType) payment.paymentType = paymentType;
 
 
-    // Save updated customer
+    // Save updated payment
     await payment.save();
 
     res.status(200).json({
@@ -119,10 +119,10 @@ const updatePayment = async (req, res) => {
 };
 
 const deletePayment = async (req, res) => {
-  const paymentId = req.params.id; // Assuming the user's generated ID is passed as a parameter
+  const paymentId = req.params.id; // Assuming the generated ID is passed as a parameter
 
   try {
-    // Find the user by generated ID and role, then delete
+    // Find the payment by generated ID , then delete
     const deletedPayment = await Payment.findOneAndDelete({ Id: paymentId });
 
     if (!deletedPayment) {
@@ -138,7 +138,7 @@ const deletePayment = async (req, res) => {
 };
 
 const getPaymentById = async (req, res) => {
-  const paymentId = req.params.id; // Assuming the user's generated ID is passed as a parameter
+  const paymentId = req.params.id; // Assuming the generated ID is passed as a parameter
 
   try {
     const payment = await Payment.findOne({ Id: paymentId })

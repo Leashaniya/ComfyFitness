@@ -26,7 +26,7 @@ app.use(bodyParser.json());
 
 
 
-//router path to customer route file
+//router path 
 const paymentRouter=require("./routes/Payment.route.js");
 app.use("/payment",paymentRouter)
 
@@ -38,3 +38,6 @@ app.use("/user", userRouter);
 
 const subscriptionRouter = require("./routes/Subscription.route.js");
 app.use("/subscription", subscriptionRouter);
+
+const membershipRouter = require("./routes/Membership.route.js");
+app.use("/membership", membershipRouter);

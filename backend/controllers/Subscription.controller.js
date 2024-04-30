@@ -129,7 +129,7 @@ const updateSubscription = async (req, res) => {
 
 
 const deleteSubscription = async (req, res) => {
-  const subscriptionId = req.params.id; // Assuming the user's generated ID is passed as a parameter
+  const subscriptionId = req.params.id; // Assuming the generated ID is passed as a parameter
 
   try {
   

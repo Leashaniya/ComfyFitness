@@ -41,8 +41,8 @@ const financeSchema= new Schema({
 });
 
 //assigning to mongodb table
-//Customer will the table name 
+//Finance will the table name 
 const Finance=mongoose.model("Finance",financeSchema);
 
-//returning Customer schema
+//returning Finance schema
 module.exports=Finance;

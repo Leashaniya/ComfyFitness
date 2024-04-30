@@ -1,5 +1,3 @@
-// User.controller.js
-// const Customer = require("../models/Customer.js");
 const Finance=require("../models/Finance.models.js")
 
 const addFinance = async (req, res) => {
