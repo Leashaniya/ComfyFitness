@@ -30,7 +30,7 @@ const CustomerLogin = () => {
       toast.success("Logged in successfully!");
       alert(" You have Logged in successfully!");
 
-      navigate("/subscription");
+      navigate("/profile", { state: response.data });// Pass user details as state
     } catch (error) {
       console.error("Login error:", error.response.data.error);
       toast.error("Login error!");

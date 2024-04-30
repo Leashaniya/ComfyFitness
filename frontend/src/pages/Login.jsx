@@ -2,9 +2,6 @@ import React from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import Button from '../components/Button.jsx'
-import FormBox from '../components/FormBox.jsx'
-import Input from '../components/Input.jsx'
 import CustomerLogin from '../components/CustomerLogin.jsx';
 import CustomerRegister from '../components/CustomerRegister.jsx'
 

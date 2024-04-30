@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import './Navbar.css'
 
 
-const NavbarA = () => {
+const NavbarA = (userId) => {
     return(
     <div className='navbar'>
     <div>
@@ -13,14 +13,14 @@ const NavbarA = () => {
     <div>
       <div className='navbar-menu '>
     <Link to="/services" >Services</Link>
-    <Link to="/subscription">Subscriptions</Link>
+    <Link to="/subs">Subscriptions</Link>
     <a href='#footer' >Contact</a>
 
       </div>
     </div>
     <div>
       <h1>
-    <button><Link to={"/profile"} className="navbar-right">Profile</Link></button>
+      <button><Link to={"/profile"} className="navbar-right">Profile</Link></button>
 
       </h1>
     </div>

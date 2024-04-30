@@ -2,7 +2,6 @@ import { useState } from 'react'
 import React from 'react'
 import { BrowserRouter,Route,Routes } from 'react-router-dom'
 import axios from 'axios'
-import './App.css'
 
 import ManagerRegister from './components/ManagerRegister'  
 import ManagerList from './components/ManagerList'          
@@ -32,10 +31,10 @@ import PaymentAdd from './components/PaymentAdd'
 import MembershipList from './components/MembershipList'
 import MembershipAdd from './components/MembershipAdd'
 import EditMembership from './components/EditMembership'
+import Pay from './pages/Pay'
 
 
 function App() {
-
   axios.defaults.baseURL = "http://localhost:7505"; //  backend server URL
   return (
     <BrowserRouter>
@@ -45,7 +44,7 @@ function App() {
           <Route path='/' element={<Home/>}/>
           <Route path='/register' element={<Register/>}/>
           <Route path='/login' element={<Login/>}/>
-          <Route path='/subscription' element={<Subscription/>}/>
+          <Route path='/subs' element={<Subscription/>}/>
           <Route path='/profile' element={<Profile/>}/>
           <Route path="/user/register-manager" element={<ManagerRegister />} />      
           <Route path="/user/allmanagers" element={<ManagerList />} />
@@ -68,15 +67,13 @@ function App() {
           <Route path="/payment/update/:Id" element={< EditPayment />} />
           <Route path="/payment/add" element={< PaymentAdd/>} />   
           <Route path="/payment/" element={<PaymentList/>} />
+          <Route path="/payment/pay" element={<Pay/>} />
           {/* membership */}
           <Route path="/membership/" element={<MembershipList/>} />
           <Route path="/membership/add" element={< MembershipAdd/>} /> 
           <Route path="/membership/update/:Id" element={< EditMembership />} />
-
-
-
     </Routes>
-    {/* <Footer/> */}
+    <Footer/>
     </div>
     </>
     </BrowserRouter>
