@@ -30,6 +30,7 @@ import EditPayment from './components/EditPayment'
 import PaymentList from './components/Payment.List'
 import PaymentAdd from './components/PaymentAdd'
 import MembershipList from './components/MembershipList'
+import MembershipAdd from './components/MembershipAdd'
 
 
 function App() {
@@ -68,6 +69,7 @@ function App() {
           <Route path="/payment/" element={<PaymentList/>} />
           {/* membership */}
           <Route path="/membership/" element={<MembershipList/>} />
+          <Route path="/membership/add" element={< MembershipAdd/>} /> 
 
 
 
