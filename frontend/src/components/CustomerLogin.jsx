@@ -27,18 +27,13 @@ const CustomerLogin = () => {
         formData
       );
       console.log(response.data);
-      // Handle successful login, such as redirecting to dashboard
       toast.success("Logged in successfully!");
       alert(" You have Logged in successfully!");
-      // const userId = response.data.id;
-      // const userDetailsResponse = await axios.get(`http://localhost:7505/user/${userId}`);
-      // const userDetails = userDetailsResponse.data;
-
-      navigate("/subs");// Pass user details as state
+      navigate("/subs");
     } catch (error) {
       console.error("Login error:", error.response.data.error);
       toast.error("Login error!");
-      // Handle login error, such as displaying an error message
+
     }
   };
 
