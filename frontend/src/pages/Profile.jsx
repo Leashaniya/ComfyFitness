@@ -31,8 +31,7 @@ const Profile = () => {
       }
     };
     fetchCustomer();
-  }, []);
-
+  }, [id]);
   
 
   // Function to handle editing details
