@@ -45,7 +45,7 @@ function App() {
           <Route path='/register' element={<Register/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/subs' element={<Subscription/>}/>
-          <Route path='/profile' element={<Profile/>}/>
+          <Route path='/user/get/:id' element={<Profile/>}/>
           <Route path="/user/register-manager" element={<ManagerRegister />} />      
           <Route path="/user/allmanagers" element={<ManagerList />} />
           <Route path="/user/allcustomers" element={<CustomerList />} />  

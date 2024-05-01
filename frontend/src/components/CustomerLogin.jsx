@@ -30,6 +30,9 @@ const CustomerLogin = () => {
       // Handle successful login, such as redirecting to dashboard
       toast.success("Logged in successfully!");
       alert(" You have Logged in successfully!");
+      // const userId = response.data.id;
+      // const userDetailsResponse = await axios.get(`http://localhost:7505/user/${userId}`);
+      // const userDetails = userDetailsResponse.data;
 
       navigate("/subs");// Pass user details as state
     } catch (error) {

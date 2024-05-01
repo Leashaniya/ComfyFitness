@@ -20,7 +20,7 @@ const NavbarA = (userId) => {
     </div>
     <div>
       <h1>
-      <button><Link to={"/profile"} className="navbar-right">Profile</Link></button>
+      <button><Link to={"/user/get/:id"} className="navbar-right">Profile</Link></button>
 
       </h1>
     </div>

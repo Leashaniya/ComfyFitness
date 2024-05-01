@@ -7,7 +7,9 @@ import { useNavigate } from 'react-router-dom';
 
 
 const Profile = () => {
-  const { Id } = useParams();
+  
+ const { id } = useParams();
+  
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     fullName: '',
@@ -20,7 +22,7 @@ const Profile = () => {
     const fetchCustomer= async () => {
       try {
         const response = await axios.get(
-          `http://localhost:7505/user/get/CU1435`
+          `http://localhost:7505/user/get/${id}`
         );
         const customerData = response.data;
         setFormData(customerData);
@@ -29,19 +31,19 @@ const Profile = () => {
       }
     };
     fetchCustomer();
-  }, [Id]);
+  }, []);
 
   
 
   // Function to handle editing details
   const handleEdit = (id) => {
-    navigate(`/user/update-customer/CU1435}`);
+    navigate(`/user/update-customer/${id}`);
   };
 
   // Function to handle deleting details
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:7505/user/delete/CU1435`);
+      await axios.delete(`http://localhost:7505/user/delete/${id}`);
       console.log("User deleted successfully!");
       alert("User deleted successfully!");
     } catch (error) {
@@ -58,7 +60,7 @@ const Profile = () => {
       <p>Email: {formData.email}</p>
       <p>Role: {formData.role}</p>
       <p>ID: {formData.Id}</p>
-      {/* Add buttons for editing and deleting details */}
+
       <button onClick={handleEdit}>Edit</button>
       <button onClick={handleDelete}>Delete</button>
     </div>
