@@ -14,7 +14,6 @@ const initialState = {
 
 function CustomerRegister() {
   const [formData, setFormData] = useState(initialState);
-  const [submitted, setSubmitted] = useState(false); // Added state variable
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -36,19 +35,13 @@ function CustomerRegister() {
       toast.success("Customer registered successfully!"); // Display success toast message
       alert("Customer registered successfully!");
       setFormData(initialState); // Reset form fields using initialState
-      setSubmitted(true); // Set submitted to true after successful form submission
+      navigate("/user/login-customer")
     } catch (error) {
       console.error("Error:", error.response.data.error);
       toast.error("Failed to register customer"); // Display error toast message
     }
   };
-  if (submitted) { // Conditional rendering based on the submitted state
-    return (
-      <div>
-        <Subscription/>
-      </div>
-    );
-  }
+
 
   return (
     <div>
