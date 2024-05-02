@@ -43,8 +43,8 @@ function App() {
     <div className='app' >
     <Routes>
           <Route path='/' element={<Home/>}/>
-          <Route path='/register' element={<Register/>}/>
-          <Route path='/login' element={<Login/>}/>
+          {/* <Route path='/register' element={<Register/>}/>
+          <Route path='/login' element={<Login/>}/> */}
           <Route path='/subs' element={<Subscription/>}/>
           <Route path='/user/get/:id' element={<Profile/>}/>
           <Route path="/user/register-manager" element={<ManagerRegister />} />      

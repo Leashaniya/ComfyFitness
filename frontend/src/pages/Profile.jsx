@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
 function Profile() {
- const { id } = useParams();
+  const { id } = useParams();
   const [customerData, setCustomerData] = useState({
     fullName: "",
     contactNumber:"",
@@ -14,10 +14,11 @@ function Profile() {
   });
 
   useEffect(() => {
+   
     const fetchCustomerData= async () => {
       try {
         const response = await axios.get(
-          `http://localhost:7505/user/get/CU3417`
+          `http://localhost:7505/user/get/${id}`
         );
         setCustomerData(response.data);
       } catch (error) {

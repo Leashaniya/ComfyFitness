@@ -29,14 +29,6 @@ const customerRegister = expressAsyncHandler(async (req, res) => {
     throw new Error("Email is not valid");
   }
 
-
-  // Check if contactNumber is 10 digits long
-  if (!validator.isLength(contactNumber, { min: 10, max: 10 })) {
-    return res
-      .status(400)
-      .json({ error: "Contact number must be 10 digits long" });
-  }
-
   let Id;
 
   let newId;
@@ -109,12 +101,6 @@ const adminRegister = expressAsyncHandler(async (req, res) => {
   if (!validator.isEmail(email)) {
     res.status(400);
     throw new Error("Email is not valid");
-  }
-
-  if (!validator.isLength(contactNumber, { min: 10, max: 10 })) {
-    return res
-      .status(400)
-      .json({ error: "Contact number must be 10 digits long" });
   }
 
   let Id;
@@ -718,6 +704,46 @@ const getUserById = async (req, res) => {
   }
 };
 
+
+const changePassword = async (req, res) => {
+  const userId = req.params.id;
+  const { currentPassword, newPassword } = req.body;
+
+  try {
+    // Find the user by their generated ID
+    const user = await User.findOne({ Id: userId });
+
+    if (!user) {
+      // If the user with the given ID is not found, return a 404 error
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Check if the current password provided matches the stored password
+    const isPasswordValid = await bcrypt.compare(
+      currentPassword,
+      user.password
+    );
+    if (!isPasswordValid) {
+      // If the current password provided is incorrect, return a 400 error
+      return res.status(400).json({ error: "Current password is incorrect" });
+    }
+
+    // Hash the new password
+    const hashedNewPassword = await bcrypt.hash(newPassword, 10);
+
+    // Update the user's password in the database
+    user.password = hashedNewPassword;
+    await user.save();
+
+    // Return a success message
+    res.status(200).json({ message: "Password changed successfully" });
+  } catch (error) {
+    // If an error occurs, return a 500 error
+    console.error(error);
+    res.status(500).json({ error: "Failed to change password" });
+  }
+};
+
 module.exports = {
   customerRegister,
   adminRegister,
@@ -740,4 +766,5 @@ module.exports = {
   getAllManagers,
   getAllAdmins,
 
+  changePassword,
 };
