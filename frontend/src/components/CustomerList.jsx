@@ -28,6 +28,9 @@ function CustomerList() {
   const handleCreate = (id) => {
     navigate(`/user/register-customer`); // Navigate to edit page
   };
+  const handleView = (id) => {
+    navigate(`/user/get/${id}`); // Navigate to edit page
+  };
 
   const handleDelete = async (id) => {
     try {
@@ -83,6 +86,8 @@ function CustomerList() {
               <td>{customer.username}</td>
               <td>{customer.email}</td>
               <td>
+              <button onClick={() => handleView(customer.Id)}>View</button>{" "}
+                {" | "}
                 <button onClick={() => handleEdit(customer.Id)}>Edit</button>{" "}
                 {" | "}
                 <button onClick={() => handleDelete(customer.Id)}>
