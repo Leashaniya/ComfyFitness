@@ -2,9 +2,12 @@ import React from 'react'
 import { assets } from '../../assets/assets'
 import { Link } from 'react-router-dom'
 import './Navbar.css'
+import { useParams } from 'react-router-dom'
 
 
-const NavbarA = (userId) => {
+function NavbarA ()  {
+  const { id } = useParams();
+
     return(
     <div className='navbar'>
     <div>
@@ -20,7 +23,7 @@ const NavbarA = (userId) => {
     </div>
     <div>
       <h1>
-      <button><Link to={"/user/get/:id"} className="navbar-right">Profile</Link></button>
+      <button><Link to={`/user/get/${id}`} className="navbar-right">Profile</Link></button>
 
       </h1>
     </div>

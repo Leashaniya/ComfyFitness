@@ -19,7 +19,6 @@ import Home from './pages/Home'
 import Register from './pages/Register'
 import Login from './pages/Login'
 import Subscription from './pages/Subscription'
-import Profile from './pages/Profile'
 import AdminHome from './components/AdminHome'
 import ManagerHome from './components/ManagerHome'
 import SubscriptionList from './components/SubscriptionList'
@@ -32,6 +31,8 @@ import MembershipList from './components/MembershipList'
 import MembershipAdd from './components/MembershipAdd'
 import EditMembership from './components/EditMembership'
 import Pay from './pages/Pay'
+import Profile from './pages/Profile'
+
 
 
 function App() {

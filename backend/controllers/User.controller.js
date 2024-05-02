@@ -29,6 +29,14 @@ const customerRegister = expressAsyncHandler(async (req, res) => {
     throw new Error("Email is not valid");
   }
 
+
+  // Check if contactNumber is 10 digits long
+  if (!validator.isLength(contactNumber, { min: 10, max: 10 })) {
+    return res
+      .status(400)
+      .json({ error: "Contact number must be 10 digits long" });
+  }
+
   let Id;
 
   let newId;
@@ -101,6 +109,12 @@ const adminRegister = expressAsyncHandler(async (req, res) => {
   if (!validator.isEmail(email)) {
     res.status(400);
     throw new Error("Email is not valid");
+  }
+
+  if (!validator.isLength(contactNumber, { min: 10, max: 10 })) {
+    return res
+      .status(400)
+      .json({ error: "Contact number must be 10 digits long" });
   }
 
   let Id;
@@ -693,7 +707,7 @@ const getUserById = async (req, res) => {
   const userId = req.params.id; // Assuming the user's generated ID is passed as a parameter
 
   try {
-    const user = await User.findOne({ Id: userId }, { password: 0 }); // Exclude password field
+    const user = await User.findOne({ Id: userId }); // Exclude password field
     if (!user) {
       return res.status(404).json({ error: "User not found" });
     }
