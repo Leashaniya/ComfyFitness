@@ -94,7 +94,7 @@ function SubscriptionList() {
 
   return (
     <div className="subscription-list-container">
-      <h2 className="subscription-list-header">Package List</h2>
+      <h2 className="subscription-list-header">Subscription List</h2>
       <p>Total Duration: {totalDuration}</p>
       <input
         className="search-input"

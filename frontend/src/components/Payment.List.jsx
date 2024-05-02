@@ -88,6 +88,7 @@ function PaymentList() {
   return (
     <div className="payment-list-container">
       <h2 className="payment-list-header">Payment List</h2>
+      <p>Total Payments: {totalPaymentCount}</p>
       
       <input
         className="search-input"
@@ -135,7 +136,7 @@ function PaymentList() {
         <button onClick={generatePDFReport}>Download PDF Report</button>
       </div>
       <br></br>
-      <p>Total Payments: {totalPaymentCount}</p>
+      
     </div>
   );
 }

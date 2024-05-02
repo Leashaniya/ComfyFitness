@@ -84,8 +84,8 @@ function AdminList() {
                 <td>{admin.email}</td>
                 <td>
                   <button onClick={() => handleEdit(admin.Id)}>Edit</button>{" "}
-                  {" | "}
-                  <button onClick={() => handleDelete(admin.Id)}>Delete</button>
+                  {/* {" | "}
+                  <button onClick={() => handleDelete(admin.Id)}>Delete</button> */}
                 </td>
               </tr>
             ))}

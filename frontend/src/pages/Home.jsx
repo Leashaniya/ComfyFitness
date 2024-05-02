@@ -12,7 +12,7 @@ const Home = () => {
           <div className="header-contents">
             <h2>Welcome to our Gym Management System</h2>
             <p>At our gym, we're committed to helping you achieve your fitness goals and lead a healthier lifestyle. Our state-of-the-art facilities, experienced trainers, and personalized workout plans are designed to help you reach your full potential.</p>
-            <button ><Link to='/register'>Get Registered NOW</Link></button>
+            <button ><Link to='/user/register-customer'>Get Registered NOW</Link></button>
            
           </div>
         </div>
