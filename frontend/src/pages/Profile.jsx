@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import NavbarA from '../components/Navbar/NavbarA'
+
 
 function Profile() {
   const { id } = useParams();
@@ -30,7 +32,9 @@ function Profile() {
   }, [id]);
   
   return (
+    
     <div>
+      <NavbarA/>
       <h2>User Profile</h2>
       <div>Name: {customerData.fullName}</div>
       <div>Contact Number: {customerData.contactNumber}</div>

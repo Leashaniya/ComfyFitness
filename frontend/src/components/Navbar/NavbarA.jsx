@@ -4,8 +4,8 @@ import { Link, useParams } from 'react-router-dom'
 import './Navbar.css'
 
 function NavbarA ()  {
-  const {id}=useParams();
-
+ 
+  const { Id } = useParams();
     return(
     <div className='navbar'>
     <div>
@@ -21,7 +21,7 @@ function NavbarA ()  {
     </div>
     <div>
       <h1>
-      <button><Link to={`/user/get/${id}`} className="navbar-right">Profile</Link></button>
+      <button><Link to={`/user/get/${Id}`} className="navbar-right">Profile</Link></button>
 
       </h1>
     </div>
