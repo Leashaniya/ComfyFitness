@@ -5,7 +5,7 @@ import './Navbar.css'
 
 function NavbarA ()  {
  
-  const { Id } = useParams();
+  const userId = localStorage.getItem('userId');
     return(
     <div className='navbar'>
     <div>
@@ -21,7 +21,7 @@ function NavbarA ()  {
     </div>
     <div>
       <h1>
-      <button><Link to={`/user/get/${Id}`} className="navbar-right">Profile</Link></button>
+      <button ><Link to={`/user/get/${userId}`} className="navbar-right">Profile</Link></button>
 
       </h1>
     </div>

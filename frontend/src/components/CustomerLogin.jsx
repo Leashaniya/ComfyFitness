@@ -32,6 +32,8 @@ const CustomerLogin = () => {
       toast.success("Logged in successfully!");
       alert(" You have Logged in successfully!");
       navigate(`/user/get/${userId}`);
+      localStorage.setItem('userId', userId);
+
     } catch (error) {
       console.error("Login error:", error.response.data.error);
       toast.error("Login error!");
