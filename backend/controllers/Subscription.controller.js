@@ -163,10 +163,27 @@ const getSubscriptionById = async (req, res) => {
   }
 };
 
+const getSubscriptionByPrice = async (req, res) => {
+  const subscriptionprice = req.params.price; 
+
+  try {
+    const subscriptionprice = await Subscription.findOne({ price: subscriptionprice })
+    if (!subscriptionprice) {
+      return res.status(404).json({ error: "subscription price not found" });
+    }
+    res.status(200).json(subscriptionprice);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to fetch subscription price" });
+  }
+};
+
+
 module.exports = {
   addSubscription,
   getAllSubscription,
   updateSubscription,
   deleteSubscription,
   getSubscriptionById,
+  getSubscriptionByPrice,
 };

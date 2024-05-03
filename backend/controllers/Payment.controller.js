@@ -152,6 +152,7 @@ const getPaymentById = async (req, res) => {
   }
 };
 
+
 module.exports = {
   addPayment,
   getAllPayment,

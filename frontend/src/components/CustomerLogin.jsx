@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import { Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
+
 const CustomerLogin = () => {
 
   const navigate = useNavigate();
@@ -30,10 +31,12 @@ const CustomerLogin = () => {
       );
       console.log(response.data);
       const { userId } = response.data;
+      const { email } = response.data;
       toast.success("Logged in successfully!");
       alert(" You have Logged in successfully!");
       navigate(`/user/get/${userId}`);
       localStorage.setItem('userId', userId);
+      localStorage.setItem('email', email);
 
     } catch (error) {
       console.error("Login error:", error.response.data.error);
@@ -43,7 +46,9 @@ const CustomerLogin = () => {
   };
 
   return (
+    <div>
     <div className="container">
+      
       <h2>CustomerLogin</h2>
       <form onSubmit={handleSubmit}>
         <div>
@@ -74,6 +79,7 @@ const CustomerLogin = () => {
       </p>
       </form>
       <ToastContainer />
+    </div>
     </div>
   );
 };

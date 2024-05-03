@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Subscription from "../pages/Subscription";
 import { Link } from "react-router-dom";
 
+
 const initialState = {
   fullName: "",
   contactNumber: "",
@@ -45,6 +46,7 @@ function CustomerRegister() {
 
 
   return (
+
     <div>
       <h2>Customer Registration</h2>
       <form onSubmit={handleSubmit}>
