@@ -16,8 +16,6 @@ import EditCustomer from './components/EditCustomer'
 import CustomerLogin from './components/CustomerLogin'
 import Footer from './components/Footer/Footer'
 import Home from './pages/Home'
-// import Register from './pages/Register'
-// import Login from './pages/Login'
 import Subscription from './pages/Subscription'
 import AdminHome from './components/AdminHome'
 import ManagerHome from './components/ManagerHome'
@@ -32,7 +30,6 @@ import MembershipAdd from './components/MembershipAdd'
 import EditMembership from './components/EditMembership'
 import Pay from './pages/Pay'
 import Profile from './pages/Profile'
-
 
 
 function App() {
