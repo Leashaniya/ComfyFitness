@@ -2,9 +2,22 @@ import React from 'react'
 import { assets } from '../../assets/assets'
 import { Link } from 'react-router-dom'
 import './Navbar.css'
+import { useState } from 'react'
 
 
 const Navbar = () => {
+
+  const [isRegistered, setIsRegistered] = useState(false);
+
+  const handleSubscriptionsClick = () => {
+    // Check if user is registered
+    if (!isRegistered) {
+      // Display message if user is not registered
+      alert('Please register first');
+    }
+  };
+
+
     return(
     <div className='navbar'>
     <div>
@@ -13,7 +26,7 @@ const Navbar = () => {
     <div>
       <div className='navbar-menu '>
     <Link to="/" >Home</Link>
-    <Link to="/user/register-customer">Subscriptions</Link>
+    <Link to="/user/register-customer" onClick={handleSubscriptionsClick}>Subscriptions</Link>
     <a href='#footer' >Contact</a>
 
       </div>

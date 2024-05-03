@@ -3,6 +3,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import Subscription from "../pages/Subscription";
+import { Link } from "react-router-dom";
 
 const initialState = {
   fullName: "",
@@ -105,6 +106,9 @@ function CustomerRegister() {
         <br />
         <button type="submit">Register</button>
       </form>
+      <p>
+        Have an account? <Link to="/user/login-customer">Login</Link>
+      </p>
     </div>
   );
 }

@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { toast } from "react-toastify";
 import { Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const CustomerLogin = () => {
 
@@ -68,6 +69,9 @@ const CustomerLogin = () => {
           />
         </div>
         <button type="submit">Login</button>
+        <p>
+        Don't have an account? <Link to="/user/register-customer">Register</Link>
+      </p>
       </form>
       <ToastContainer />
     </div>
