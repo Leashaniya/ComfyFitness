@@ -71,7 +71,7 @@ function App() {
           <Route path="/membership/add" element={< MembershipAdd/>} /> 
           <Route path="/membership/update/:Id" element={< EditMembership />} />
     </Routes>
-    <Footer/>
+
     </div>
     </>
     </BrowserRouter>

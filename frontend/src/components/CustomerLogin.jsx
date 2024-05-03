@@ -5,6 +5,7 @@ import { ToastContainer } from "react-toastify";
 import { toast } from "react-toastify";
 import { Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import './AdminManagerLogin.css';
 
 const CustomerLogin = () => {
 
@@ -49,6 +50,7 @@ const CustomerLogin = () => {
         <div>
           <label htmlFor="emailOrUsername">Email/Username:</label>
           <input
+            className="inputClass"
             type="text"
             id="emailOrUsername"
             name="emailOrUsername"
@@ -60,6 +62,7 @@ const CustomerLogin = () => {
         <div>
           <label htmlFor="password">Password:</label>
           <input
+            className="inputClass"
             type="password"
             id="password"
             name="password"

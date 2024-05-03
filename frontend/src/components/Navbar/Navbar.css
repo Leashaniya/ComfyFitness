@@ -1,29 +1,37 @@
-.navbar{
+.navbar {
+    top: 0;
     padding: 0;
+    width: 100%;
     display: flex;
+    position: sticky; /* Change position to fixed */
     justify-content: space-between;
     align-items: center;
-    background-color:rgb(1, 11, 68) ;
+    background-color: rgb(1, 11, 68);
+    z-index: 100;
 }
-.navbar .logo{
+
+.navbar .logo {
     width: 150px;
-    height: 100px; 
+    height: 100px;
 }
-.navbar-menu{
+
+.navbar-menu {
     display: flex;
     list-style: none;
     gap: 60px;
     color: rgb(252, 252, 252);
     font-size: 25px;
 }
-.navbar-right{
+
+.navbar-right {
     display: flex;
     align-items: center;
     gap: 50px;
     justify-content: space-between;
     padding: 5px 20px;
 }
-.navbar button{
+
+.navbar button {
     background: transparent;
     font-size: 16px;
     color: rgb(255, 255, 255);
@@ -34,17 +42,24 @@
     transition: 0.3s;
     font-size: 25px;
 }
+
 .navbar-menu li:last-child {
     margin-right: 300px; /* Add margin-right to the last menu item */
 }
-.navbar button:hover{
-    background-color:  #b6a6f9;
+
+.navbar button:hover {
+    background-color: #b6a6f9;
 }
-.navbar .active{
+
+.navbar .active {
     padding-top: 5px;
     padding-bottom: 0px;
     border-bottom: 3px solid rgb(255, 255, 255);
 }
-.navbar li{
-    cursor: pointer;    
+
+.navbar li {
+    cursor: pointer;
 }
+
+/* Add styles to ensure content starts after the navbar */
+

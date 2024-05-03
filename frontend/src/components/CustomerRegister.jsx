@@ -4,6 +4,9 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import Subscription from "../pages/Subscription";
 import { Link } from "react-router-dom";
+import Footer from '../components/Footer/Footer.jsx';
+import photoAnime from '../assets/photoAnime.png';
+import './register.css';
 
 const initialState = {
   fullName: "",
@@ -45,71 +48,91 @@ function CustomerRegister() {
 
 
   return (
-    <div>
-      <h2>Customer Registration</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Full Name:
-          <input
-            type="text"
-            name="fullName"
-            value={formData.fullName}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <br />
-        <label>
-          Contact Number:
-          <input
-            type="text"
-            name="contactNumber"
-            value={formData.contactNumber}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <br />
-        <label>
-          Username:
-          <input
-            type="text"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <br />
-        <br />
-        <label>
-          Email:
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <br />
-        <label>
-          Password:
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-        </label>
-        <br />
-        <button type="submit">Register</button>
-      </form>
-      <p>
-        Have an account? <Link to="/user/login-customer">Login</Link>
-      </p>
-    </div>
+    <div className="par" style={{ backgroundImage: `url(${photoAnime})` }}>
+    <div className="mn-bdy">
+          <form className="shitForm" onSubmit={handleSubmit}>
+              <div className="top-bar">
+                <h5 className="h5">Customer Registration</h5>
+              </div>
+              <div className="bar2">
+                  <div className="devb">
+                    <label className="lbl">Full Name:</label>
+                      <div>
+                      <input
+                        type="text"
+                        name="fullName"
+                        value={formData.fullName}
+                        onChange={handleChange}
+                        required
+                      />
+                      </div>
+                  </div>
+                </div>
+              <div className="bar2">
+                  <div className="devb">
+                    <label className="lbl">Contact Number:</label>
+                    <div>
+                      <input
+                        type="text"
+                        name="contactNumber"
+                        value={formData.contactNumber}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                  </div>
+              </div>
+              <div className="bar2">
+                  <div className="devb">
+                    <label className="lbl">Username:</label>
+                    <div>
+                      <input
+                        type="text"
+                        name="username"
+                        value={formData.username}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                  </div>
+              </div>
+              <div className="bar1">
+                  <div className="devb">
+                    <label className="lbl">Email:</label>
+                    <div>
+                      <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div className="devb">
+                    <label className="lbl">Password:</label>
+                    <div>
+                      <input
+                        type="password"
+                        name="password"
+                        value={formData.password}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
+                  </div>
+              </div>
+              <div className="button-up">
+                <button className="btn" type="submitt">Register</button>
+              </div>
+              <p>
+                Have an account? <Link style={{color: '#071f8c'}} to="/user/login-customer">Login</Link>
+              </p>
+              </form>
+
+      </div>
+          <Footer/>
+      </div>
   );
 }
 

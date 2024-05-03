@@ -3,17 +3,11 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
-  padding: 0 ;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: Outfit;
-  scroll-behavior: smooth;
+body {
+    margin: 0; /* Add this line to reset the default margin */
+    padding: 0; /* Add this line to reset the default padding */
 }
-body{
-  min-height: 100vh;
-  background-color: #d7cdff;
-}
+
 a{
   text-decoration: none;
   color: inherit;
@@ -75,7 +69,6 @@ a{
   border-collapse: collapse;
   margin-bottom: 20px;
 }
-
 
 .payment-table td {
   border: 1px solid #ddd;
