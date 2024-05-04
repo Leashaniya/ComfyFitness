@@ -5,9 +5,11 @@
   margin: 0 auto;
 }
   
-h2 {
+.h2Sush {
   text-align: center;
+  justify-content: center;
   margin-bottom: 20px;
+  font-size: 30px;
 }
   
 form {
@@ -24,7 +26,7 @@ label {
   margin-bottom: 10px;
   border: 1px solid #D9D9D9;
   border-radius: 10px;
-  box-sizing: border-box;
+  box-sizing: border-box;
 }
   
 button {
@@ -37,48 +39,48 @@ button {
     cursor: pointer;
 }
   
-  button:hover {
-    background-color: #0056b3;
-  }
+button:hover {
+  background-color: #0056b3;
+}
   
-  .error {
-    color: red;
-    margin-top: 5px;
-  }
+.error {
+  color: red;
+  margin-top: 5px;
+}
   /* AdminManagerLogin.css */
-
-  .login-table {
-    width: 100%;
-    border-collapse: collapse; /* Ensures that table borders are collapsed */
-  }
-  
-  .login-table label {
-    font-weight: bold;
-    border: 1px solid #010408; /* Add border to labels */
-    padding: 8px; /* Add padding for spacing */
-  }
-  
-.login-table select,
-.login-table input[type="text"],
-.login-table input[type="password"] {
-    width: 100%;
-    padding: 8px;
+.mnShit {
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+}
+.shittyForm {
+   width: 500px;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   align-items: center;
+   margin-left: auto;
+   margin-right: auto;
+   background-color: rgba(255, 255, 255, 0.7);
+   padding: 10px;
+   border-radius: 10px;
+}
+.mnForm {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+.fashions {
+    padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 1px solid #D9D9D9;
+    border-radius: 10px;
+    box-sizing: border-box;
 }
-  
-.login-table button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+.mkcntr {
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
-  
-  .login-table button:hover {
-    background-color: #0056b3;
-  }
-
 

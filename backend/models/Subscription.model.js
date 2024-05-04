@@ -28,28 +28,28 @@ const subscriptionSchema= new Schema({
     required: [true, "Please add a type"],
     default: "Special",
   },
-  startDate: {
-    type: Date,
-    required: [true, "Please add a start date"],
-    validate: {
-      validator: function (value) {
-        // Check if start date is in the future
-        return value >= new Date();
-      },
-      message: "Start date must be in the future",
-    },
-  },  
-  endDate: {
-    type: Date,
-    required: [true, "Please add an end date"],
-    validate: {
-      validator: function (value) {
-        // Check if end date is after start date
-        return value >= this.startDate;
-      },
-      message: "End date must be after start date",
-    },
-  },
+  // startDate: {
+  //   type: Date,
+  //   required: [true, "Please add a start date"],
+  //   validate: {
+  //     validator: function (value) {
+  //       // Check if start date is in the future
+  //       return value >= new Date();
+  //     },
+  //     message: "Start date must be in the future",
+  //   },
+  // },  
+  // endDate: {
+  //   type: Date,
+  //   required: [true, "Please add an end date"],
+  //   validate: {
+  //     validator: function (value) {
+  //       // Check if end date is after start date
+  //       return value >= this.startDate;
+  //     },
+  //     message: "End date must be after start date",
+  //   },
+  // },
   Id: {
     type: String,
     required: true,

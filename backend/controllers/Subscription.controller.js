@@ -12,10 +12,10 @@ const generateToken = (Id) => {
 };
 
 const addSubscription = expressAsyncHandler(async (req, res) => {
-  const { packageName,price,duration,description,category,startDate,endDate } = req.body;
+  const { packageName,price,duration,description,category} = req.body;
 
   //Validation
-  if (!packageName || !price || !duration || !description || !category || !startDate || !endDate) {
+  if (!packageName || !price || !duration || !description || !category) {
     res.status(400);
     throw new Error("Please include all fields");
   }
@@ -37,8 +37,8 @@ const addSubscription = expressAsyncHandler(async (req, res) => {
       duration,
       description,
       category,
-      startDate,
-      endDate,
+      // startDate,
+      // endDate,
       Id,
     });
     await newSubscription.save();
@@ -51,8 +51,8 @@ const addSubscription = expressAsyncHandler(async (req, res) => {
         duration: newSubscription.duration,
         description: newSubscription.description,
         category: newSubscription.category,
-        startDate: newSubscription.startDate,
-        endDate: newSubscription.endDate,
+        // startDate: newSubscription.startDate,
+        // endDate: newSubscription.endDate,
         token: generateToken(newSubscription._id),
         message: "package registered successfully",
       });
@@ -70,6 +70,7 @@ const addSubscription = expressAsyncHandler(async (req, res) => {
 
 // Get all subscriptions
 const getAllSubscription = async (req, res) => {
+  console.log("get all subscription");
   try {
     const subscriptions = await Subscription.find();
     res.status(200).json(subscriptions);
@@ -87,7 +88,7 @@ const updateSubscription = async (req, res) => {
 
   try {
     // Check if all required fields are present
-    if (!packageName || !price || !duration || !description || !category || !startDate || !endDate) {
+    if (!packageName || !price || !duration || !description || !category ) {
       return res.status(400).json({ error: "Please include all fields" });
     }
 
@@ -104,8 +105,8 @@ const updateSubscription = async (req, res) => {
     if (duration) subscription.duration = duration;
     if (description) subscription.description = description;
     if (category) subscription.category = category;
-    if (startDate) subscription.startDate = startDate;
-    if (endDate) subscription.endDate = endDate;
+    // if (startDate) subscription.startDate = startDate;
+    // if (endDate) subscription.endDate = endDate;
 
     // Save updated subscription
     await subscription.save();
@@ -117,8 +118,8 @@ const updateSubscription = async (req, res) => {
       duration: subscription.duration,
       description: subscription.description,
       category: subscription.category,
-      startDate: subscription.startDate,
-      endDate: subscription.endDate,
+      // startDate: subscription.startDate,
+      // endDate: subscription.endDate,
       message: "subscription details updated successfully",
     });
   } catch (error) {
