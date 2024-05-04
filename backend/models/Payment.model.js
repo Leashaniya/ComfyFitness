@@ -1,6 +1,11 @@
 const mongoose=require("mongoose");
 const Schema =mongoose.Schema;
 const paymentSchema= new Schema({
+
+    userId:{
+        type: String,
+        default: "",
+    },
     //2
     paymentAmount: {
         type: Number,
@@ -11,13 +16,7 @@ const paymentSchema= new Schema({
     paymentDate: {
         type: Date,
         required: [true, "Please add a payment date"],
-        validate: {
-            validator: function(value) {
-                // Check if payment date is in the past
-                return value >= new Date();
-            },
-            message: "Payment date must be in future",
-        },
+        
     },
     //4
     pDescription: {

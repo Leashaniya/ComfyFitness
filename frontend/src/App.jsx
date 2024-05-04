@@ -30,6 +30,7 @@ import MembershipAdd from './components/MembershipAdd'
 import EditMembership from './components/EditMembership'
 import Pay from './pages/Pay'
 import Profile from './pages/Profile'
+import SuccessPage from './components/Success'
 
 
 function App() {
@@ -66,6 +67,7 @@ function App() {
           <Route path="/payment/add" element={< PaymentAdd/>} />   
           <Route path="/payment/" element={<PaymentList/>} />
           <Route path="/payment/pay" element={<Pay/>} />
+          <Route path='/payment/success' element={<SuccessPage/>}/>
           {/* membership */}
           <Route path="/membership/" element={<MembershipList/>} />
           <Route path="/membership/add" element={< MembershipAdd/>} /> 
