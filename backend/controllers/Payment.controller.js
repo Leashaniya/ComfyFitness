@@ -11,10 +11,11 @@ const generateToken = (Id) => {
 };
 
 const addPayment = expressAsyncHandler(async(req, res)  => {
-  const {paymentAmount, paymentDate,pDescription,pAddressl,pCountry,paymentType } =req.body;
-
+  const {paymentAmount, paymentDate,pDescription,pAddressl,pCountry,paymentType,userId } =req.body;
+  console.log(req.body);
+  console.log("ghellp");
   //Validation
-  if (!paymentAmount|| !paymentDate || !pDescription || !pAddressl || !pCountry ||!paymentType) {
+  if (!paymentAmount|| !paymentDate || !pDescription || !pAddressl || !pCountry ||!paymentType ||!userId) {
     res.status(400);
     throw new Error("Please include all fields");
   }
@@ -38,12 +39,14 @@ try{
      pCountry,
      paymentType,
      Id,
+     userId,
   });
   await newPayment.save();
 
   if (newPayment) {
     res.status(201).json({
       id: newPayment.paymentID,
+      userId: newPayment.userId,
       paymentAmount: newPayment.paymentAmount,
       paymentDate: newPayment.paymentDate,
       pDescription: newPayment.pDescription,
