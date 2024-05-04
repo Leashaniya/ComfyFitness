@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./Pay.css"
 import { Link } from "react-router-dom";
+import NavbarA from "../components/Navbar/NavbarA"
+import SuccessPage from "../components/Success";
 
 const PaymentForm = (props) => {
   const [cardNumber, setCardNumber] = useState("");
@@ -8,15 +10,20 @@ const PaymentForm = (props) => {
   const [expiryDate, setExpiryDate] = useState("");
   const [cvv, setCvv] = useState("");
   const [errors, setErrors] = useState({});
+  const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (!validateForm()) {
-      console.log("Validation Failed");
-      return;
+    console.log("Form Submitted");
+    if (validateForm()) {
+      // Handle form submission here
+      console.log("Form is Valid");
+    } else {
+      console.log("Form is Invalid");
     }
-    props.purchase();
   };
+
+
 
   const validateForm = () => {
     let tempErrors = {};
@@ -48,14 +55,20 @@ const PaymentForm = (props) => {
 
     setErrors(tempErrors);
     return formIsValid;
+
   };
 
   const handleFormClick = (event) => {
     event.stopPropagation();
   };
 
+
+
   return (
+    <div>
+    <NavbarA/>
     <div className="container" onClick={() => {props.handleClose()}}>
+    {!submitted ? (
     <form
       onSubmit={handleSubmit}
       onClick={handleFormClick}
@@ -154,12 +167,20 @@ const PaymentForm = (props) => {
         type="submit"
         className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
       >
+        
         Submit Payment
-      </button><br />
-      <Link to="/">Skip</Link>
+        </button><br />
+
+      
     </form>
+     ) : (
+      <Link to="/payment/success">
+            <SuccessPage />
+          </Link>
+    )}
+    </div>
     </div>
   );
 };
 
-export default PaymentForm;
+export default PaymentForm;

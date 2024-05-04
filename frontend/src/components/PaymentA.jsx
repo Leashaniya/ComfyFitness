@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 
 const initialState = {
     paymentAmount: "",
@@ -13,21 +12,10 @@ const initialState = {
     paymentType:""
 };
 
-
-function PaymentAdd() {
+function PaymentA() {
   const [formData, setFormData] = useState(initialState);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    // Fetch paymentAmount from localStorage and set it in the formData
-    const storedPaymentAmount = localStorage.getItem("price");
-    if (storedPaymentAmount) {
-      setFormData((prevFormData) => ({
-        ...prevFormData,
-        paymentAmount: storedPaymentAmount,
-      }));
-    }
-  }, []);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -38,30 +26,16 @@ function PaymentAdd() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const userId = localStorage.getItem('userId');
     try {
       const response = await axios.post(
         "http://localhost:7505/payment/add",
-        
         formData
       );
       console.log(response.data);
-      if (formData.paymentType === "Online") {
-        toast.info("Please fill the card details");
-        alert("Please fill the card details!"); // Display info toast message
-      } else {
-        toast.success("Payment added successfully!"); // Display success toast message
-        alert("Payment added successfully!");
-      }
+      toast.success("payment added successfully!"); // Display success toast message
+      alert("payment added successfully!");
       setFormData(initialState); // Reset form fields using initialState
-
- 
-      // Navigate based on the selected payment type
-      if (formData.paymentType === "Online") {
-        navigate("/payment/pay");
-      } else {
-        navigate("/payment/success");
-      }
+      navigate("/payment/pay");
     } catch (error) {
       console.error("Error:", error.response.data.error);
       toast.error("Failed to add  payment"); // Display error toast message
@@ -80,7 +54,6 @@ function PaymentAdd() {
             value={formData.paymentAmount}
             onChange={handleChange}
             required
-            readOnly
           />
         </label>
         <br />
@@ -146,13 +119,13 @@ function PaymentAdd() {
         </label>
         
         <br />
-        <button type="submit">submit</button>
+        <button type="submit">Add</button>
       </form>
     </div>
   );
 }
 
-export default PaymentAdd;
+export default PaymentA;
 
 
 

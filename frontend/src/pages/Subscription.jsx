@@ -109,9 +109,10 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Subscription = () => {
-  const [subscriptions, setSubscriptions] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
+    const [subscriptions, setSubscriptions] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
+
 
   useEffect(() => {
     const fetchSubscriptions = async () => {
@@ -124,6 +125,15 @@ const Subscription = () => {
     };
     fetchSubscriptions();
   }, []);
+
+  const handleBuyNow = (packageName, duration,price) => {
+    localStorage.setItem('packageName', packageName);
+    localStorage.setItem('duration', duration);
+    localStorage.setItem('price', price);
+    navigate(`/payment/add`);
+  };
+
+
 
   const filteredSubscriptions = subscriptions.filter((subscription) =>
     Object.values(subscription).some(
@@ -140,11 +150,15 @@ const Subscription = () => {
         {filteredSubscriptions.map((subscription) => (
           <div key={subscription.Id} className="subscription-item">
             <h3>{subscription.packageName}</h3>
+            <p><strong>Price:</strong> {subscription.price}</p>
             <p><strong>Duration:</strong> {subscription.duration}</p>
             <p><strong>Description:</strong> {subscription.description}</p>
             <p><strong>Category:</strong> {subscription.category}</p>
             <button>
-              <Link to="/payment/pay">Buy now</Link>
+            <button onClick={() => handleBuyNow(subscription.packageName, subscription.duration,subscription.price)}>Buy now</button>
+
+             
+
             </button>
           </div>
         ))}

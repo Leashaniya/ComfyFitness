@@ -111,6 +111,7 @@ function SubscriptionList() {
           <tr>
             <th>Package ID</th>
             <th>packageName</th>
+            <th>price</th>
             <th>duration</th>
             <th>description</th>
             <th>category</th>
@@ -124,6 +125,7 @@ function SubscriptionList() {
             <tr key={subscription.Id}>
               <td>{subscription.Id}</td>
               <td>{subscription.packageName}</td>
+              <td>{subscription.price}</td>
               <td>{subscription.duration}</td>
               <td>{subscription.description}</td>
               <td>{subscription.category}</td>
