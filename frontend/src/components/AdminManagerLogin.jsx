@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import './AdminManagerLogin.css'
+import shitIMG from '../assets/shitIMG.png'
 
 const AdminManagerLogin = () => {
   const navigate = useNavigate();
@@ -41,15 +42,16 @@ const AdminManagerLogin = () => {
   };
 
   return (
-    <div>
-      <h2>Management Login</h2>
-      <form className="login-form" onSubmit={handleSubmit}>
-        <table className="login-table">
-          <tbody>
-            <tr>
-              <td><label htmlFor="role">Role:</label></td>
-              <td>
+   <div className="mnShit" style={{ backgroundImage: `url(${shitIMG})` }}>
+    <div className="shittyForm">
+      <h2 className="h2Sush">Management Login</h2>
+     <div>
+       <form className="mnForm" onSubmit={handleSubmit}>
+        <div>
+            <label className="lbl" htmlFor="role">Role:</label>
+              <div>
                 <select
+                  className="fashions"
                   id="role"
                   name="role"
                   value={formData.role}
@@ -60,12 +62,13 @@ const AdminManagerLogin = () => {
                   <option value="Admin">Admin</option>
                   <option value="Manager">Manager</option>
                 </select>
-              </td>
-            </tr>
-            <tr>
-              <td><label htmlFor="emailOrUsername">Email/Username:</label></td>
-              <td>
+              </div>
+        </div>
+        <div>
+            <label className="lbl" htmlFor="emailOrUsername">Email/Username:</label>
+              <div>
                 <input
+                  className="fashions"
                   type="text"
                   id="emailOrUsername"
                   name="emailOrUsername"
@@ -73,12 +76,13 @@ const AdminManagerLogin = () => {
                   onChange={handleChange}
                   required
                 />
-              </td>
-            </tr>
-            <tr>
-              <td><label htmlFor="password">Password:</label></td>
-              <td>
+              </div>
+        </div>
+        <div>
+            <label className="lbl" htmlFor="password">Password:</label>
+              <div>
                 <input
+                  className="fashions"
                   type="password"
                   id="password"
                   name="password"
@@ -86,16 +90,13 @@ const AdminManagerLogin = () => {
                   onChange={handleChange}
                   required
                 />
-              </td>
-            </tr>
-            <tr>
-              <td></td>
-              <td><button type="submit">Login</button></td>
-            </tr>
-          </tbody>
-        </table>
-      </form>
+              </div>
+        </div>
+           <button className="mkcntr" type="submit">Login</button>
+        </form>
+      </div>
     </div>
+   </div>
   );
 };
 
