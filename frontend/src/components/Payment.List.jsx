@@ -97,12 +97,13 @@ function PaymentList() {
         value={searchTerm}
         onChange={handleSearch}
       />
-      <button className="create-button" onClick={() => handleCreate()}>
+      {/* <button className="create-button" onClick={() => handleCreate()}>
         Create a new payment
-      </button>
+      </button> */}
       <table className="payment-table" id="subscription-table">
         <thead>
           <tr>
+          <th>User ID</th>
             <th>Payment ID</th>
             <th>Payment Amount</th>
             <th>Payment Date</th>
@@ -116,6 +117,7 @@ function PaymentList() {
         <tbody>
           {filteredPayments.map((payment) => (
             <tr key={payment.Id}>
+              <td>{payment.userId}</td>
               <td>{payment.Id}</td>
               <td>{payment.paymentAmount}</td>
               <td>{payment.paymentDate}</td>

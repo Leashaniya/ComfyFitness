@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 const initialState = {
     paymentAmount: "",
@@ -9,13 +13,26 @@ const initialState = {
     pDescription: "",
     pAddressl:"",
     pCountry: "",
-    paymentType:""
+    paymentType:"",
+    userId:""
 };
 
 function PaymentAdd() {
   const [formData, setFormData] = useState(initialState);
+  const [startDate, setStartDate] = useState(new Date());
+  const userId = localStorage.getItem("userId");
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const storedPaymentAmount = localStorage.getItem("price");
+  
+    if (storedPaymentAmount) {
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        paymentAmount: storedPaymentAmount,
+      }));
+    }
+  }, []);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -23,6 +40,7 @@ function PaymentAdd() {
       [name]: value,
     });
   };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,20 +50,29 @@ function PaymentAdd() {
         formData
       );
       console.log(response.data);
-      toast.success("payment added successfully!"); // Display success toast message
-      alert("payment added successfully!");
-      setFormData(initialState); // Reset form fields using initialState
-      navigate("/payment/");
+      toast.success("Payment added successfully!"); // Display success toast message
+      alert("Payment added successfully!");
+      setFormData(initialState); 
+      navigate("/payment/success");
     } catch (error) {
       console.error("Error:", error.response.data.error);
       toast.error("Failed to add  payment"); // Display error toast message
+      alert("Payment unsuccessful" ); // Display alert message for payment failure
+      navigate("/subs");
     }
   };
-
   return (
     <div>
       <h2>PaymentAdd</h2>
       <form onSubmit={handleSubmit}>
+
+          {/* <input
+            type="hiiden"
+            name="userId"
+            value={formData.userId}
+          />      */}
+           <input type="hidden"  value={userId}/>
+
       <label>
       paymentAmount:
           <input
@@ -66,7 +93,9 @@ function PaymentAdd() {
             onChange={handleChange}
             required
           />
+           {/* <DatePicker selected={startDate} value={formData.paymentDate}  onChange={handleChange} /> */}
         </label>
+      
         <br />
         <label>
         pDescription:
@@ -100,6 +129,8 @@ function PaymentAdd() {
             required
           />
           
+
+          
         </label>
         <br />
 
@@ -120,7 +151,9 @@ function PaymentAdd() {
         
         <br />
         <button type="submit">Add</button>
+        
       </form>
+     
     </div>
   );
 }
