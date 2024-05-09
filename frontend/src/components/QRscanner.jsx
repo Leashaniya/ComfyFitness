@@ -1,13 +1,3 @@
-<<<<<<< Updated upstream
-import React from 'react';
-import QRCode from 'qrcode.react';
-
-const QRscanner = ({ value }) => {
-  return (
-    <div>
-      <QRCode value={value} />
-    </div>
-=======
 // QRscanner.js
 import React, { useRef, useState } from "react";
 import QRCode from "qrcode.react";
@@ -70,7 +60,6 @@ const QRscanner = ({ value }) => {
         )}
       </div>
     </>
->>>>>>> Stashed changes
   );
 };
 

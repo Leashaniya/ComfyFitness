@@ -1,13 +1,3 @@
-<<<<<<< Updated upstream
-import React from 'react'
-import { useState } from 'react';
-import { useEffect } from 'react';
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
-import NavbarA from '../components/Navbar/NavbarA'
-import QRscanner from '../components/QRscanner'
-import { useNavigate } from 'react-router-dom';
-=======
 // import React, { useState, useEffect, useCallback } from "react";
 // import axios from "axios";
 // import { useParams, useNavigate } from "react-router-dom";
@@ -15,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 // import user from "../assets/user.png";
 // import "./Profile.css";
 // import QRCode from "react-qr-code";
->>>>>>> Stashed changes
 
 // function Profile() {
 //   const { id } = useParams(); // Assuming id is userId
@@ -168,11 +157,7 @@ import "./Profile.css";
 import QRCode from "react-qr-code";
 
 function Profile() {
-<<<<<<< Updated upstream
-  const { id } = useParams();
-=======
   const { id } = useParams(); // Assuming id is userId
->>>>>>> Stashed changes
   const navigate = useNavigate();
   const [customerData, setCustomerData] = useState({
     fullName: "",
@@ -213,28 +198,6 @@ function Profile() {
 
   useEffect(() => {
     fetchCustomerData();
-<<<<<<< Updated upstream
-  }, [id]);
-
-
-
-  const email = localStorage.getItem('email');
-  const packageName = localStorage.getItem('packageName');
-  const qrData = `http://yourserver.com/index.html?email=${email}&packageName=${packageName}`;
-
-
-
-  const handleQRCodeClick = () => {
-    const anchor = document.createElement('a');
-    anchor.href = qrData;
-    anchor.target = '_blank'; // Open in a new tab
-    anchor.click();
-  };
-  const handleEdit = (id) => {
-    navigate(`/user/update-customer/${id}`); // Navigate to edit page
-  };
-
-=======
     fetchPackageDetails();
   }, [fetchCustomerData, fetchPackageDetails]);
 
@@ -342,29 +305,9 @@ function Profile() {
   };
   
   
->>>>>>> Stashed changes
 
   return (
     <div>
-<<<<<<< Updated upstream
-      <NavbarA/>
-    <div className="secSub">
-    <div className="mySubs">
-    <div  className="subsItem2">
-    <div className="pckgTopic">
-        <span>User Profile</span>
-      </div>
-        <div>Name: {customerData.fullName}</div>
-        <p><strong>Contact Number:</strong> {customerData.contactNumber}</p>
-        <p><strong>Username: </strong> {customerData.username}</p>
-        <p><strong>Email:</strong> {customerData.email}</p>
-        <QRscanner  value={qrData} onClick={handleQRCodeClick}/>
-        <button onClick={() => handleEdit(customerData.Id)}>Edit</button>
-      </div>
-      </div>
-  </div>
-  </div>
-=======
       <NavbarA />
       <div className="profile-container">
         <h2 className="profile-header">User Profile</h2>
@@ -446,7 +389,6 @@ function Profile() {
         )}
       </div>
     </div>
->>>>>>> Stashed changes
   );
 }
 

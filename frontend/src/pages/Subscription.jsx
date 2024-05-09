@@ -1,11 +1,3 @@
-<<<<<<< Updated upstream
-import React, { useState, useEffect } from 'react';
-import NavbarA from '../components/Navbar/NavbarA';
-import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
-import './Pay.css';
-import bgPckg from '../assets/bgPckg.png';
-=======
 
 
 import React, { useState, useEffect } from "react";
@@ -14,7 +6,6 @@ import axios from "axios";
 import { Link } from "react-router-dom"; 
 import "./Pay.css";
 import bgPckg from "../assets/bgPckg.png"; 
->>>>>>> Stashed changes
 
 const Subscription = () => {
   // Retrieving user ID from localStorage
@@ -72,24 +63,6 @@ const Subscription = () => {
 
   return (
     <div className="par" style={{ backgroundImage: `url(${bgPckg})` }}>
-<<<<<<< Updated upstream
-      <NavbarA />
-      <div className="secSub">
-        <div className="mySubs">
-          {filteredSubscriptions.map((subscription) => (
-            <div key={subscription.Id} className="subsItem">
-              <div className="pckgTopic">{subscription.packageName}</div>
-              <p><strong>Duration:</strong> {subscription.duration}</p>
-              <p><strong>Description:</strong> {subscription.description}</p>
-              <p><strong>Category:</strong> {subscription.category}</p>
-              <div>
-                <button className="btnStyle">
-                  <Link to="/payment/add">Buy now</Link>
-                </button>
-              </div>
-            </div>
-          ))}
-=======
       <NavbarA /> 
       <div className="secSub">
         <div className="mySubs">
@@ -154,7 +127,6 @@ const Subscription = () => {
                   </div>
                 </div>
               ))}
->>>>>>> Stashed changes
         </div>
       </div>
     </div>
@@ -162,8 +134,3 @@ const Subscription = () => {
 };
 
 export default Subscription;
-<<<<<<< Updated upstream
-
-
-=======
->>>>>>> Stashed changes
