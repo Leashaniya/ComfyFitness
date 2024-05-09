@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import './AdminManagerLogin.css'
-import shitIMG from '../assets/shitIMG.png'
+import "./AdminManagerLogin.css";
+import shitIMG from "../assets/shitIMG.png";
 
 const AdminManagerLogin = () => {
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ const AdminManagerLogin = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:7505/user/login-adminAndManger",
+        "http://localhost:7505/user/login-adminAndManger",  
         formData
       );
       const { role } = response.data;
@@ -42,13 +42,15 @@ const AdminManagerLogin = () => {
   };
 
   return (
-   <div className="mnShit" style={{ backgroundImage: `url(${shitIMG})` }}>
-    <div className="shittyForm">
-      <h2 className="h2Sush">Management Login</h2>
-     <div>
-       <form className="mnForm" onSubmit={handleSubmit}>
+    <div className="mnShit" style={{ backgroundImage: `url(${shitIMG})` }}>
+      <div className="shittyForm">
+        <h2 className="h2Sush">Management Login</h2>
         <div>
-            <label className="lbl" htmlFor="role">Role:</label>
+          <form className="mnForm" onSubmit={handleSubmit}>
+            <div>
+              <label className="lbl" htmlFor="role">
+                Role:
+              </label>
               <div>
                 <select
                   className="fashions"
@@ -63,9 +65,11 @@ const AdminManagerLogin = () => {
                   <option value="Manager">Manager</option>
                 </select>
               </div>
-        </div>
-        <div>
-            <label className="lbl" htmlFor="emailOrUsername">Email/Username:</label>
+            </div>
+            <div>
+              <label className="lbl" htmlFor="emailOrUsername">
+                Email/Username:
+              </label>
               <div>
                 <input
                   className="fashions"
@@ -77,9 +81,11 @@ const AdminManagerLogin = () => {
                   required
                 />
               </div>
-        </div>
-        <div>
-            <label className="lbl" htmlFor="password">Password:</label>
+            </div>
+            <div>
+              <label className="lbl" htmlFor="password">
+                Password:
+              </label>
               <div>
                 <input
                   className="fashions"
@@ -91,12 +97,14 @@ const AdminManagerLogin = () => {
                   required
                 />
               </div>
+            </div>
+            <button className="mkcntr" type="submit">
+              Login
+            </button>
+          </form>
         </div>
-           <button className="mkcntr" type="submit">Login</button>
-        </form>
       </div>
     </div>
-   </div>
   );
 };
 

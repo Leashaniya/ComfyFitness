@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+<<<<<<< Updated upstream
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import DatePicker from "react-datepicker";
@@ -15,10 +16,24 @@ const initialState = {
     pCountry: "",
     paymentType:"",
     userId:""
+=======
+import { useNavigate, useParams } from "react-router-dom";
+
+const initialState = {
+  paymentAmount: "",
+  paymentDate: "",
+  pDescription: "",
+  pAddressl: "",
+  pCountry: "",
+  paymentType: "",
+  userId: "",
+>>>>>>> Stashed changes
 };
 
 function PaymentAdd() {
+  const { packageName, amount, duration } = useParams();
   const [formData, setFormData] = useState(initialState);
+<<<<<<< Updated upstream
   const [startDate, setStartDate] = useState(new Date());
   const userId = localStorage.getItem("userId");
   const navigate = useNavigate();
@@ -33,6 +48,26 @@ function PaymentAdd() {
       }));
     }
   }, []);
+=======
+  const userId = localStorage.getItem("userId");
+  const navigate = useNavigate();
+
+   useEffect(() => {
+     // Calculate expiration date
+     const paymentDate = new Date();
+     const expirationDate = new Date(paymentDate);
+     expirationDate.setMonth(paymentDate.getMonth() + parseInt(duration));
+
+     setFormData({
+       userId,
+       paymentAmount: amount,
+       paymentDate: paymentDate.toISOString().split("T")[0], // Store only the date
+       packageName,
+       expirationDate: expirationDate.toISOString().split("T")[0], // Store only the date
+     });
+   }, [userId, packageName, amount, duration]);
+
+>>>>>>> Stashed changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -50,6 +85,7 @@ function PaymentAdd() {
         formData
       );
       console.log(response.data);
+<<<<<<< Updated upstream
       toast.success("Payment added successfully!"); // Display success toast message
       alert("Payment added successfully!");
       setFormData(initialState); 
@@ -58,6 +94,16 @@ function PaymentAdd() {
       console.error("Error:", error.response.data.error);
       toast.error("Failed to add  payment"); // Display error toast message
       alert("Payment unsuccessful" ); // Display alert message for payment failure
+=======
+      toast.success("Payment added successfully!");
+      alert("Payment added successfully!");
+      setFormData(initialState);
+      navigate(`/payment/success/${packageName}/${amount}/${userId}`);
+    } catch (error) {
+      console.error("Error:", error.response.data.error);
+      toast.error("Failed to add payment");
+      alert("Payment unsuccessful");
+>>>>>>> Stashed changes
       navigate("/subs");
     }
   };
@@ -65,6 +111,7 @@ function PaymentAdd() {
     <div>
       <h2>PaymentAdd</h2>
       <form onSubmit={handleSubmit}>
+<<<<<<< Updated upstream
 
           {/* <input
             type="hiiden"
@@ -96,9 +143,19 @@ function PaymentAdd() {
            {/* <DatePicker selected={startDate} value={formData.paymentDate}  onChange={handleChange} /> */}
         </label>
       
+=======
+        <label>
+          Package Name: {packageName} {/* Displaying packageName */}
+        </label>
+        <br />
+        <label>paymentAmount: {amount}</label>
+        <br />
+        <label>paymentDate : {new Date().toISOString().split("T")[0]}</label>
+
+>>>>>>> Stashed changes
         <br />
         <label>
-        pDescription:
+          pDescription:
           <input
             type="text"
             name="pDescription"
@@ -109,7 +166,7 @@ function PaymentAdd() {
         </label>
         <br />
         <label>
-        pAddressl:
+          pAddressl:
           <input
             type="text"
             name="pAddressl"
@@ -120,7 +177,7 @@ function PaymentAdd() {
         </label>
         <br />
         <label>
-        pCountry:
+          pCountry:
           <input
             type="text"
             name="pCountry"
@@ -128,27 +185,27 @@ function PaymentAdd() {
             onChange={handleChange}
             required
           />
+<<<<<<< Updated upstream
           
 
           
+=======
+>>>>>>> Stashed changes
         </label>
         <br />
-
         <label>
-        paymentType:
-        <select
+          paymentType:
+          <select
             name="paymentType"
             value={formData.paymentType}
             onChange={handleChange}
             required
           >
             <option value="">Select payment Type</option>
-            <option value="Online">Online</option>
+            {/* <option value="Online">Online</option> */}
             <option value="Offline">Offline</option>
           </select>
-          
         </label>
-        
         <br />
         <button type="submit">Add</button>
         
@@ -159,7 +216,3 @@ function PaymentAdd() {
 }
 
 export default PaymentAdd;
-
-
-
-

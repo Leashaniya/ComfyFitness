@@ -7,10 +7,10 @@ import "./SubscriptionAdd.css";
 // Initial state of the form fields
 
 const initialState = {
-    packageName: "", // Edit this field as needed
-    price: "", // Edit this field as needed
-    duration: "", // Edit this field as needed
-    description: "", // Edit this field as needed
+    packageName: "", 
+    price: "", 
+    duration: "", 
+    description: "", 
     category: "", 
     startDate: "", 
     endDate: "",
@@ -114,7 +114,7 @@ function SuscriptionAdd() {
           </select>
         </label>
         </div>    
-        <div className="devb"><label>
+        {/* <div className="devb"><label>
         Start Date:
           <input
             type="date"
@@ -133,7 +133,7 @@ function SuscriptionAdd() {
             onChange={handleChange}
             required
           />
-        </label></div>
+        </label></div> */}
         
         <div><button type="submit">Add</button></div>
         </div>

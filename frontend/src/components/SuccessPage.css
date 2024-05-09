@@ -1,0 +1,41 @@
+/* SuccessPage.css */
+
+.success-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.success-content {
+  text-align: center;
+  padding: 40px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+}
+
+h2 {
+  color: #28a745;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 1.1em;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.success-details {
+  margin-top: 20px;
+  font-size: 1.1em;
+  text-align: left;
+}
+
+.success-details p {
+  margin: 5px 0;
+}

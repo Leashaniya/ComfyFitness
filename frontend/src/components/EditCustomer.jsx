@@ -54,11 +54,13 @@ function EditCustomer() {
   };
 
   return (
-    <div>
-      <h2>Edit Customer</h2>
+    <div className="vetti">
+      <h2 style={{display: 'flex', justifyContent: 'center', color: 'white'}}>Edit Customer</h2>
+      <div style={{maxWidth: '500px', marginLeft: 'auto', marginRight: 'auto'}}>
       <form onSubmit={handleSubmit}>
-        <label>
-          Full Name:
+
+        <div className="devb">
+        <label>Full Name:</label>
           <input
             type="text"
             name="fullName"
@@ -66,10 +68,10 @@ function EditCustomer() {
             onChange={handleChange}
             required
           />
-        </label>
-        <br />
-        <label>
-          Contact Number:
+       </div>
+       <div className="devb">
+       <label>Contact Number:</label>
+          
           <input
             type="text"
             name="contactNumber"
@@ -77,10 +79,11 @@ function EditCustomer() {
             onChange={handleChange}
             required
           />
-        </label>
-        <br />
-        <label>
-          Username:
+        </div>
+      
+        <div className="devb">
+        <label>Username:</label>
+        
           <input
             type="text"
             name="username"
@@ -88,11 +91,10 @@ function EditCustomer() {
             onChange={handleChange}
             required
           />
-        </label>
-        <br />
-        <br />
-        <label>
-          Email:
+        </div>
+        <div className="devb">
+        <label>  Email:</label>
+        
           <input
             type="email"
             name="email"
@@ -100,10 +102,10 @@ function EditCustomer() {
             onChange={handleChange}
             required
           />
-        </label>
-        <br />
-        <label>
-          Password:
+        </div>
+        <div className="devb">
+        <label>   Password:</label>
+         
           <input
             type="password"
             name="password"
@@ -111,10 +113,11 @@ function EditCustomer() {
             onChange={handleChange}
             required
           />
-        </label>
-        <br />
-        <button type="submit">Update</button>
+        </div>
+        <div className="devb">
+        <button type="submit"><label>Update</label></button></div>
       </form>
+      </div>
     </div>
   );
 }

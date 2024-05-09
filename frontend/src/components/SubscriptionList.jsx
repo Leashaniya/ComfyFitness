@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas'
 import '../index.css'
+import { Link } from "react-router-dom";
 
 function SubscriptionList() {
   const [subscriptions, setSubscriptions] = useState([]);
@@ -39,6 +40,10 @@ function SubscriptionList() {
     navigate(`/subscription/add`);
   };
 
+  const handleView = (id) => {
+    navigate(`/subscription/get/${id}`); // Navigate to edit page
+  };
+
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:7505/subscription/delete/${id}`);
@@ -63,9 +68,9 @@ function SubscriptionList() {
   );
 
   const generateCSVReport = () => {
-    const csvData = "Package ID, Package Name, Duration, Description, Category, Start Date, End Date\n";
+    const csvData = "Package ID, Package Name, Duration, Description, Category\n";
     const rows = subscriptions.map((subscription) => (
-      `${subscription.Id},${subscription.packageName},${subscription.duration},${subscription.description},${subscription.category},${subscription.startDate},${subscription.endDate}\n`
+      `${subscription.Id},${subscription.packageName},${subscription.duration},${subscription.description},${subscription.category}\n`
     ));
     const csvContent = csvData + rows.join("");
     const encodedUri = encodeURI(csvContent);
@@ -75,25 +80,59 @@ function SubscriptionList() {
     document.body.appendChild(link);
     link.click();
   };
+  // const generatePDFReport = () => {
+  //   const input = document.getElementById("subscription-table");
+  //   html2canvas(input)
+  //     .then((canvas) => {
+  //       const imgData = canvas.toDataURL("image/png");
+
+  //       // Calculate the scale factor to fit the content inside the PDF
+  //       const scaleFactor = 0.5; // Adjust this value as needed
+  //       const width = canvas.width * scaleFactor;
+  //       const height = canvas.height * scaleFactor;
+
+  //       const pdf = new jsPDF("p", "mm", "a1");
+  //       pdf.addImage(imgData, "PNG", 0, 0, width, height);
+  //       pdf.save("subscription_report.pdf");
+  //     });
+  // };
   const generatePDFReport = () => {
     const input = document.getElementById("subscription-table");
-    html2canvas(input)
+    const tableClone = input.cloneNode(true); // Clone the table
+  
+    // Remove the last column (Actions) from the cloned table
+    const rows = tableClone.querySelectorAll("tr");
+    rows.forEach(row => {
+      row.removeChild(row.lastElementChild);
+    });
+  
+    // Append the cloned table to the document temporarily
+    document.body.appendChild(tableClone);
+  
+    html2canvas(tableClone)
       .then((canvas) => {
+        // Remove the cloned table from the document
+        document.body.removeChild(tableClone);
+  
         const imgData = canvas.toDataURL("image/png");
-
+  
         // Calculate the scale factor to fit the content inside the PDF
         const scaleFactor = 0.5; // Adjust this value as needed
         const width = canvas.width * scaleFactor;
         const height = canvas.height * scaleFactor;
-
+  
         const pdf = new jsPDF("p", "mm", "a1");
         pdf.addImage(imgData, "PNG", 0, 0, width, height);
         pdf.save("subscription_report.pdf");
       });
   };
+  
 
   return (
     <div className="subscription-list-container">
+      <Link to="/user/adminHome">
+        <button>Back to home</button>
+      </Link>
       <h2 className="subscription-list-header">Subscription List</h2>
       <p>Total Duration: {totalDuration}</p>
       <input
@@ -114,8 +153,8 @@ function SubscriptionList() {
             <th>duration</th>
             <th>description</th>
             <th>category</th>
-            <th>startDate</th>
-            <th>endDate</th>
+            {/* <th>startDate</th>
+            <th>endDate</th> */}
             <th>Actions</th>
           </tr>
         </thead>
@@ -127,8 +166,8 @@ function SubscriptionList() {
               <td>{subscription.duration}</td>
               <td>{subscription.description}</td>
               <td>{subscription.category}</td>
-              <td>{subscription.startDate}</td>
-              <td>{subscription.endDate}</td>
+              {/* <td>{subscription.startDate}</td>
+              <td>{subscription.endDate}</td> */}
               <td className="action-buttons">
                 <button onClick={() => handleEdit(subscription.Id)}>Edit</button>{" "}
                 <button onClick={() => handleDelete(subscription.Id)}>Delete</button>

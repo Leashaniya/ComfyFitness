@@ -8,7 +8,7 @@ function EditPayment() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     paymentAmount: "",
-    paymentDate:"",
+    paymentDate:new Date().toISOString().split("T")[0],
     pDescription: "",
     pAddressl:"",
     pCountry: "",
@@ -124,7 +124,7 @@ function EditPayment() {
             required
           >
             <option value="">Select payment Type</option>
-            <option value="Online">Online</option>
+            {/* <option value="Online">Online</option> */}
             <option value="Offline">Offline</option>
           </select>
           

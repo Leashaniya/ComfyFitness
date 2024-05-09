@@ -132,4 +132,65 @@ input:focus{
    font-family: serif;
    padding: 10px;
    color: #000000;
+<<<<<<< Updated upstream
  }
+=======
+ }
+
+
+
+
+
+ /* Add your CSS styles here */
+
+/* Add this to your CSS file */
+
+.subsItems {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin: 10px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f7f7f7;
+  transition: box-shadow 0.3s;
+}
+
+.subsItems:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.plans-header {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #444;
+}
+
+.pckgTopics {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #007bff;
+}
+
+.subsItems p {
+  margin: 8px 0;
+  color: #555;
+}
+
+.btns-disabled {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  background-color: gray;
+  color: white;
+  font-size: 14px;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.btns-disabled:disabled {
+  background-color: gray;
+  opacity: 0.5;
+}
+>>>>>>> Stashed changes

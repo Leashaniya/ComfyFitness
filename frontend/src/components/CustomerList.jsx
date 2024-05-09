@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { Link } from "react-router-dom";
+
 
 function CustomerList() {
   const [customers, setCustomers] = useState([]);
@@ -56,6 +58,10 @@ function CustomerList() {
 
   return (
     <div>
+       <Link to="/user/adminHome">
+        <button>Back to home</button>
+      </Link>
+
       <h2>Customers List</h2>
       <input
         type="text"
@@ -63,9 +69,9 @@ function CustomerList() {
         value={searchTerm}
         onChange={handleSearch}
       />
-      <button onClick={() => handleCreate()}>
+      {/* <button onClick={() => handleCreate()}>
                   Create a new cutomer
-                </button>
+                </button> */}
       <table>
         <thead>
           <tr>
@@ -86,13 +92,14 @@ function CustomerList() {
               <td>{customer.username}</td>
               <td>{customer.email}</td>
               <td>
-              <button onClick={() => handleView(customer.Id)}>View</button>{" "}
-                {" | "}
-                <button onClick={() => handleEdit(customer.Id)}>Edit</button>{" "}
-                {" | "}
+              {/* <button onClick={() => handleView(customer.Id)}>View</button>{" "}
+                {" | "} */}
+                {/* <button onClick={() => handleEdit(customer.Id)}>Edit</button>{" "} */}
+                {/* {" | "} */}
                 <button onClick={() => handleDelete(customer.Id)}>
                   Delete
                 </button>
+               
               </td>
             </tr>
           ))}

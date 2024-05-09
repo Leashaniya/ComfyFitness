@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import { Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import './AdminManagerLogin.css';
+import Footer from "./Footer/Footer";
 
 const CustomerLogin = () => {
 
@@ -77,7 +78,9 @@ const CustomerLogin = () => {
       </p>
       </form>
       <ToastContainer />
+
     </div>
+    
   );
 };
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import '../index.css'
+import { Link } from "react-router-dom";
 
 function ManagerList() {
   const [managers, setManagers] = useState([]);
@@ -55,6 +56,9 @@ function ManagerList() {
 
   return (
     <div>
+      <Link to="/user/adminHome">
+        <button>Back to home</button>
+      </Link>
       <h2>Managers List</h2>
       <input
         type="text"

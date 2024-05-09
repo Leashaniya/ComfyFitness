@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas'
 import '../index.css'
+import { Link } from "react-router-dom";
 
 function PaymentList() {
   const [payments, setPayments] = useState([]);
@@ -62,19 +63,20 @@ function PaymentList() {
         const scaleFactor = 0.5;
         const width = canvas.width * scaleFactor;
         const height = canvas.height * scaleFactor;
-        const pdf = new jsPDF("p", "mm", "a1");
+        const pdf = new jsPDF("p", "mm", "a2");
         pdf.addImage(imgData, "PNG", 0, 0, width, height);
         pdf.save("payment_report.pdf");
       });
   };
 
+  
     // Calculate total payment count
     const totalPaymentCount = payments.length;
 
     const generateCSVReport = () => {
-      const csvData = "Payment ID, Payment Amount, Payment Date, Description, Address, Country\n";
+      const csvData = "User ID, Payment ID, Payment Amount, Payment Date, Description, Address, Country, Payment Type\n";
       const rows = payments.map((payment) => (
-        `${payment.Id},${payment.paymentAmount},${payment.paymentDate},${payment.pDescription},${payment.pAddressl},${payment.pCountry}\n`
+        `${payment.userId},${payment.Id},${payment.paymentAmount},${payment.paymentDate},${payment.pDescription},${payment.pAddressl},${payment.pCountry},${payment.paymentType}\n`
       ));
       const csvContent = csvData + rows.join("");
       const encodedUri = encodeURI(csvContent);
@@ -84,9 +86,13 @@ function PaymentList() {
       document.body.appendChild(link);
       link.click();
     };
+    
 
   return (
     <div className="payment-list-container">
+      <Link to="/user/adminHome">
+        <button>Back to home</button>
+      </Link>
       <h2 className="payment-list-header">Payment List</h2>
       <p>Total Payments: {totalPaymentCount}</p>
       

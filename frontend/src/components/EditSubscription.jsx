@@ -133,7 +133,7 @@ function EditSubscription() {
         </label>
               </td>
             </tr>
-            <tr>
+            {/* <tr>
               <td>startDate:</td>
               <td>
                 <input
@@ -158,7 +158,7 @@ function EditSubscription() {
                   required
                 />
               </td>
-            </tr>
+            </tr> */}
           </tbody>
         </table>
         <button type="submit">Update</button>

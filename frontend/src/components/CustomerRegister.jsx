@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Subscription from "../pages/Subscription";
 import { Link } from "react-router-dom";
 import Footer from '../components/Footer/Footer.jsx';
-import photoAnime from '../assets/photoAnime.png';
+// import photoAnime from '../assets/photoAnime.png';
 import './register.css';
 
 const initialState = {
@@ -45,10 +45,10 @@ function CustomerRegister() {
       toast.error("Failed to register customer"); // Display error toast message
     }
   };
-
+  // style={{ backgroundImage: `url(${photoAnime})` }}
 
   return (
-    <div className="par" style={{ backgroundImage: `url(${photoAnime})` }}>
+    <div className="par" >
     <div className="mn-bdy">
           <form className="shitForm" onSubmit={handleSubmit}>
               <div className="top-bar">

@@ -31,12 +31,18 @@ import EditMembership from './components/EditMembership'
 import Pay from './pages/Pay'
 import Profile from './pages/Profile'
 import SuccessPage from './components/Success'
+<<<<<<< Updated upstream
+=======
+import QRscanner from './components/QRscanner'
+
+>>>>>>> Stashed changes
 
 
 function App() {
   axios.defaults.baseURL = "http://localhost:7505"; //  backend server URL
   return (
     <BrowserRouter>
+<<<<<<< Updated upstream
     <>
     <div className='app' >
     <Routes>
@@ -76,8 +82,49 @@ function App() {
 
     </div>
     </>
+=======
+      <>
+        <div className="app">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/subs" element={<Subscription />} />
+            <Route path="/user/get/:id" element={<Profile />} />
+            <Route path="/user/register-manager"element={<ManagerRegister />}/>
+            <Route path="/user/allmanagers" element={<ManagerList />} />
+            <Route path="/user/allcustomers" element={<CustomerList />} />
+            <Route path="/user/register-admin" element={<AdminRegister />} />
+            <Route path="/user/allAdmins" element={<AdminList />} />
+            <Route path="/user/update-manager/:Id" element={<EditManager />} />
+            <Route path="/user/register-customer" element={<CustomerRegister />}/>
+            <Route path="/user/update-customer/:Id" element={<EditCustomer />}/>
+            <Route path="/user/update-admin/:Id" element={<EditAdmin />} />
+            <Route path="/user/login-customer" element={<CustomerLogin />} />
+            <Route path="/user/login-adminAndManger" element={<AdminManagerLogin />}/>
+            <Route path="/user/adminHome" element={<AdminHome />} />
+            <Route path="/user/managerHome" element={<ManagerHome />} />
+            {/* Subscription */}
+            <Route path="/subscription/" element={<SubscriptionList />} />
+            <Route path="/subscription/add" element={<SubscriptionAdd />} />
+            <Route path="/subscription/update/:Id" element={<EditSubscription />}/>
+            
+            {/* Payment */}
+            <Route path="/payment/update/:Id" element={<EditPayment />} />
+            <Route path="/payment/add/:packageName/:amount /:duration" element={<PaymentAdd />}/>
+            <Route path="/payment/" element={<PaymentList />} />
+            <Route path="/payment/pay" element={<Pay />} />
+            <Route path="/payment/success/:packageName/:amount/:userId" element={<SuccessPage />}/>
+            <Route path="/qr" element={<QRscanner />} />
+            {/* membership */}
+            <Route path="/membership/" element={<MembershipList />} />
+            <Route path="/membership/add" element={<MembershipAdd />} />
+            <Route path="/membership/update/:Id" element={<EditMembership />} />
+          </Routes>
+        </div>
+        {/* <Footer/> */}
+      </>
+>>>>>>> Stashed changes
     </BrowserRouter>
-  )
+  );
 }
 
 export default App

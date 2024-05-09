@@ -60,6 +60,7 @@ button[type="submit"]:hover {
     font-size: 35px;
     color: #FFFFFF;
     margin-bottom: 10px;
+    text-align: center;
 }
 .nav-item {
     width: 18%;

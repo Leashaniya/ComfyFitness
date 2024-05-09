@@ -1,13 +1,13 @@
-.navbar {
+ .navbar {
     top: 0;
     padding: 0;
     width: 100%;
     display: flex;
-    position: sticky; /* Change position to fixed */
+    position: relative; 
     justify-content: space-between;
     align-items: center;
     background-color: rgb(1, 11, 68);
-    z-index: 100;
+    /* z-index: 100; */
 }
 
 .navbar .logo {
@@ -44,7 +44,7 @@
 }
 
 .navbar-menu li:last-child {
-    margin-right: 300px; /* Add margin-right to the last menu item */
+    margin-right: 300px;
 }
 
 .navbar button:hover {
@@ -61,5 +61,4 @@
     cursor: pointer;
 }
 
-/* Add styles to ensure content starts after the navbar */
 
